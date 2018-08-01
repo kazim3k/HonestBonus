@@ -1,15 +1,22 @@
 package com.github.GroupProject.entities;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class User {
 
     private String UUID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String companyName;
     private String email;
+    @OneToMany(mappedBy = "user")
     private Set<Client> clients;
+    @OneToMany(mappedBy = "user")
     private Set<Employee> employees;
+    @OneToMany(mappedBy = "user")
     private Set<Bonus> bonuses;
 
     public String getUUID() {

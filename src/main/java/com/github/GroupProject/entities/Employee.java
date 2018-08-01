@@ -1,15 +1,20 @@
 package com.github.GroupProject.entities;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class Employee {
     private String UUID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
+    @ManyToOne
     private User user;
-    private Set<Payment> payments;
+    @OneToMany(mappedBy = "employee")
     private Set<EBP> ebps;
 
     public void setUUID(String UUID) {
@@ -35,9 +40,6 @@ public class Employee {
     }
 
 
-    public void setPayments(Set<Payment> payments) {
-        this.payments = payments;
-    }
 
     public void setEbps(Set<EBP> ebps) {
         this.ebps = ebps;
@@ -68,6 +70,7 @@ public class Employee {
         return user;
     }
 
-
-
+    public Set<EBP> getEbps() {
+        return ebps;
+    }
 }

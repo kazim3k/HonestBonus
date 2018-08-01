@@ -1,14 +1,22 @@
 package com.github.GroupProject.entities;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class EBP {
 
     private String UUID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
     private Bonus bonus;
+    @ManyToOne
     private Employee employee;
+    @ManyToOne
     private Client client;
+    @OneToMany(mappedBy = "ebp")
     private Set<Payment> payments;
 
     public String getUUID() {

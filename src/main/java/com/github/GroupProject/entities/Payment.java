@@ -1,12 +1,25 @@
 package com.github.GroupProject.entities;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Payment {
 
     private String UUID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne
     private Transaction transaction;
-    private EBP epb;
-    private Employee employee;
+    @ManyToOne
+    private EBP ebp;
+
 
     public String getUUID() {
         return UUID;
@@ -28,19 +41,12 @@ public class Payment {
         this.transaction = transaction;
     }
 
-    public EBP getEpb() {
-        return epb;
+    public EBP getEbp() {
+        return ebp;
     }
 
-    public void setEpb(EBP epb) {
-        this.epb = epb;
+    public void setEbp(EBP ebp) {
+        this.ebp = ebp;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 }

@@ -1,18 +1,25 @@
 package com.github.GroupProject.entities;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class Client {
 
-    private Long id;
+
     private String UUID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String clientName;
+    @ManyToOne
     private User user;
+    @OneToMany(mappedBy = "client")
     private Set<Transaction> transactions;
+    @OneToMany(mappedBy = "client")
     private Set<EBP> ebps;
 
-    public Client() {
-    }
+
 
     public Set<Transaction> getTransactions() {
         return transactions;
