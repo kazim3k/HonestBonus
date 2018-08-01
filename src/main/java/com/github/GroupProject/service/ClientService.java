@@ -1,4 +1,8 @@
 package com.github.GroupProject.service;
 
-public class ClientService {
+import org.springframework.stereotype.Service;
+
+@Service
+public interface ClientService {
+    void create(String clientName, Long userId);
 }
