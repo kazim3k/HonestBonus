@@ -4,20 +4,20 @@ public class Client {
 
     private Long Id;
     private String UUID;
-
     private String clientName;
-    private Long userId;
+    private User userId;
+
     //private Set<Transactions> transactions;
     //private Set<EBP> ebps;
-
 
     public Client() {
     }
 
-    public Client(String UUID, Long id, String clientName, Long userId) {
-        this.UUID = UUID;
-        Id = id;
-        this.clientName = clientName;
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
@@ -40,13 +40,5 @@ public class Client {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 }
