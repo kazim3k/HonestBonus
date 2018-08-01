@@ -1,6 +1,6 @@
 package com.github.GroupProject.entities;
 
-import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.*;
 import java.util.Set;
