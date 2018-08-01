@@ -5,11 +5,11 @@ import java.util.Set;
 public class User {
 
     private String UUID;
-    private Long Id;
+    private Long id;
     private String companyName;
     private String email;
-//    private Set<Client> clients;
-//    private Set<Employee> employees;
+    private Set<Client> clients;
+    private Set<Employee> employees;
     private Set<Bonus> bonuses;
 
     public String getUUID() {
@@ -21,7 +21,7 @@ public class User {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getCompanyName() {
@@ -40,21 +40,21 @@ public class User {
         this.email = email;
     }
 
-//    public Set<Client> getClients() {
-//        return clients;
-//    }
-//
-//    public void setClients(Set<Client> clients) {
-//        this.clients = clients;
-//    }
-//
-//    public Set<Employee> getEmployees() {
-//        return employees;
-//    }
-//
-//    public void setEmployees(Set<Employee> employees) {
-//        this.employees = employees;
-//    }
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
 
     public Set<Bonus> getBonuses() {
         return bonuses;

@@ -1,24 +1,41 @@
 package com.github.GroupProject.entities;
 
+import java.util.Set;
+
 public class Client {
 
-    private Long Id;
+    private Long id;
     private String UUID;
     private String clientName;
-    private User userId;
-
-    //private Set<Transactions> transactions;
-    //private Set<EBP> ebps;
+    private User user;
+    private Set<Transaction> transactions;
+    private Set<EBP> ebps;
 
     public Client() {
     }
 
-    public User getUserId() {
-        return userId;
+    public Set<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public Set<EBP> getEbps() {
+        return ebps;
+    }
+
+    public void setEbps(Set<EBP> ebps) {
+        this.ebps = ebps;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getUUID() {
@@ -30,7 +47,7 @@ public class Client {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
 

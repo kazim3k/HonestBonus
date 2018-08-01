@@ -1,16 +1,17 @@
 package com.github.GroupProject.entities;
 
+import java.util.Set;
+
 public class Transaction {
 
-    private Long Id;
     private String UUID;
+    private Long id;
     private Client client;
-    //private Set<Payment> payments;
+    private Set<Payment> payments;
 
-    public Transaction() {}
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getUUID() {

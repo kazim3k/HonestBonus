@@ -1,14 +1,16 @@
 package com.github.GroupProject.entities;
 
+import java.util.Set;
+
 public class Employee {
     private String UUID;
-    private Long Id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private User user;
-//    private Set<Payment> payments;
-//    private Set<EBP> ebps;
+    private Set<Payment> payments;
+    private Set<EBP> ebps;
 
     public void setUUID(String UUID) {
         this.UUID = UUID;
@@ -33,13 +35,13 @@ public class Employee {
     }
 
 
-//    public void setPayments(Set<Payment> payments) {
-//        this.payments = payments;
-//    }
-//
-//    public void setEbps(Set<EBP> ebps) {
-//        this.ebps = ebps;
-//    }
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
+
+    public void setEbps(Set<EBP> ebps) {
+        this.ebps = ebps;
+    }
 
 
     public String getUUID() {
@@ -47,7 +49,7 @@ public class Employee {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getFirstName() {

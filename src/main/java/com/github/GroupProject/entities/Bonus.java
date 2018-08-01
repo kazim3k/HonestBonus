@@ -1,13 +1,15 @@
 package com.github.GroupProject.entities;
 
+import java.util.Set;
+
 public class Bonus {
 
     private String UUID;
-    private Long Id;
+    private Long id;
     private String name;
     private Double percentOfTransaction;
     private User user;
-    //private Set<EBP> ebps;
+    private Set<EBP> ebps;
 
     public String getUUID() {
         return UUID;
@@ -18,7 +20,7 @@ public class Bonus {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
@@ -45,11 +47,11 @@ public class Bonus {
         this.user = user;
     }
 
-//    public Set<EBP> getEbps() {
-//        return ebps;
-//    }
-//
-//    public void setEbps(Set<EBP> ebps) {
-//        this.ebps = ebps;
-//    }
+    public Set<EBP> getEbps() {
+        return ebps;
+    }
+
+    public void setEbps(Set<EBP> ebps) {
+        this.ebps = ebps;
+    }
 }
