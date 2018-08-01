@@ -5,7 +5,9 @@ import com.github.GroupProject.repository.ClientRepository;
 import com.github.GroupProject.repository.UserRepository;
 import com.github.GroupProject.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ClientServiceImpl implements ClientService {
 
     private ClientRepository clientRepository;
@@ -18,11 +20,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void create(String clientName, Long userId) {
+    public void create(String clientName, String uuid) {
         Client client = new Client();
 
         client.setClientName(clientName);
-        client.setUser(userRepository.findOne(userId));
+        client.setUser(userRepository.findOneByUuid(uuid));
         clientRepository.save(client);
     }
 }

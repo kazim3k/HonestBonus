@@ -4,8 +4,9 @@ import com.github.GroupProject.entities.User;
 import com.github.GroupProject.repository.UserRepository;
 import com.github.GroupProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class UserServicelmpl implements UserService {
 
     private UserRepository userRepository;

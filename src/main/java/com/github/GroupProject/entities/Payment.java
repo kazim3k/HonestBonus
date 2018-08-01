@@ -3,11 +3,12 @@ package com.github.GroupProject.entities;
 
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class Payment {
 
-    private String UUID;
+    private String uuid = UUID.randomUUID().toString();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,11 +20,11 @@ public class Payment {
 
 
     public String getUUID() {
-        return UUID;
+        return uuid;
     }
 
     public void setUUID(String UUID) {
-        this.UUID = UUID;
+        this.uuid = UUID;
     }
 
     public Long getId() {

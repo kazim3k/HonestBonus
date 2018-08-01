@@ -20,7 +20,7 @@ public class ClientController {
 
     @PostMapping
     public void create(@RequestParam String clientName,
-                       @RequestParam Long userId) {
-        clientService.create(clientName,userId);
+                       @RequestParam String uuid) {
+        clientService.create(clientName,uuid);
     }
 }

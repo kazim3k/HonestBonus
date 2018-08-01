@@ -2,12 +2,13 @@ package com.github.GroupProject.entities;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Users")
 public class User {
 
-    private String UUID;
+    private String uuid = UUID.randomUUID().toString();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,12 +21,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Bonus> bonuses;
 
-    public String getUUID() {
-        return UUID;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public Long getId() {

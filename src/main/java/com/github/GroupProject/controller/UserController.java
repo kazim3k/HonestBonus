@@ -19,7 +19,7 @@ public class UserController {
 
 
     @PostMapping
-    public void create(@RequestParam String companyName, String email){
+    public void create(@RequestParam String companyName, @RequestParam String email){
     userservice.create(companyName, email);
 
     }

@@ -2,11 +2,12 @@ package com.github.GroupProject.entities;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 public class Bonus {
 
-    private String UUID;
+    private String uuid = UUID.randomUUID().toString();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -17,12 +18,12 @@ public class Bonus {
     @OneToMany(mappedBy = "bonus")
     private Set<EBP> ebps;
 
-    public String getUUID() {
-        return UUID;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public Long getId() {

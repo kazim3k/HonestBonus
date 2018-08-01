@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 public class Transaction {
 
-    private String UUID;
+    private String uuid;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -30,12 +30,12 @@ public class Transaction {
         return id;
     }
 
-    public String getUUID() {
-        return UUID;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public Client getClient() {
