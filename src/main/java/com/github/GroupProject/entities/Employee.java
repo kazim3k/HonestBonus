@@ -6,7 +6,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
-    private Long idUser;
+    private User user;
 //    private Set<Payment> payments;
 //    private Set<EBP> ebps;
 
@@ -15,6 +15,10 @@ public class Employee {
     }
 
 
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -28,9 +32,6 @@ public class Employee {
         this.email = email;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
 
 //    public void setPayments(Set<Payment> payments) {
 //        this.payments = payments;
@@ -61,9 +62,10 @@ public class Employee {
         return email;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
+
 
 
 }
