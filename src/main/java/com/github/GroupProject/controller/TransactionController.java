@@ -1,11 +1,11 @@
 package com.github.GroupProject.controller;
 
+import com.github.GroupProject.dto.TransactionDto;
 import com.github.GroupProject.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -21,5 +21,10 @@ public class TransactionController {
     @PostMapping
     public void create(@RequestParam String clientUuid){
         transactionService.create(clientUuid);
+    }
+
+    @GetMapping
+    public Set<TransactionDto> findAll(){
+        return transactionService.findAll();
     }
 }
