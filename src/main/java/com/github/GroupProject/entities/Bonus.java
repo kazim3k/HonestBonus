@@ -32,12 +32,12 @@ public class Bonus extends BaseEntity{
         this.name = name;
     }
 
-    public Double getPercentOfTransaction() {
+    public Double getShareOfTransaction() {
         return shareOfTransaction;
     }
 
-    public void setPercentOfTransaction(Double percentOfTransaction) {
-        this.shareOfTransaction = percentOfTransaction;
+    public void setShareOfTransaction(Double shareOfTransaction) {
+        this.shareOfTransaction = shareOfTransaction;
     }
 
     public User getUser() {
