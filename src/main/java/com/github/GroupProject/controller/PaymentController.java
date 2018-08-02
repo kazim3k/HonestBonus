@@ -26,7 +26,7 @@ public class PaymentController {
     Set<PaymentDto> findAll (){
          return paymentService.findAll();
 
-        
+
     }
 
 }
