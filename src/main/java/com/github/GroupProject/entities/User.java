@@ -33,8 +33,8 @@ public class User {
         return id;
     }
 
-    public String getCompanyName(String companyName) {
-        return this.companyName;
+    public String getCompanyName() {
+        return companyName;
     }
 
     public void setCompanyName(String companyName) {
