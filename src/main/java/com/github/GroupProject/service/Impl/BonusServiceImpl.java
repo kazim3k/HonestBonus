@@ -5,7 +5,9 @@ import com.github.GroupProject.repository.BonusRepository;
 import com.github.GroupProject.repository.UserRepository;
 import com.github.GroupProject.service.BonusService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BonusServiceImpl implements BonusService {
 
     private BonusRepository bonusRepository;
@@ -18,10 +20,10 @@ public class BonusServiceImpl implements BonusService {
     }
 
     @Override
-    public void create(String name, Double percentOfTransaction, String uuid) {
+    public void create(String name, Double shareOfTransaction, String uuid) {
         Bonus bonus = new Bonus();
         bonus.setName(name);
-        bonus.setPercentOfTransaction(percentOfTransaction);
+        bonus.setPercentOfTransaction(shareOfTransaction);
         bonus.setUser(userRepository.findOneByUuid(uuid));
         bonusRepository.save(bonus);
     }

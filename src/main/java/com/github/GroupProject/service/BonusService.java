@@ -2,5 +2,6 @@ package com.github.GroupProject.service;
 
 public interface BonusService {
 
-    void create(String name, Double percentOfTransaction, String uuid);
+    void create(String name, Double shareOfTransaction, String uuid);
 }
+

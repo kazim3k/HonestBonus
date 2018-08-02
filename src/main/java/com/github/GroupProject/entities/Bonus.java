@@ -12,7 +12,7 @@ public class Bonus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Double percentOfTransaction;
+    private Double shareOfTransaction;
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "bonus")
@@ -39,11 +39,11 @@ public class Bonus {
     }
 
     public Double getPercentOfTransaction() {
-        return percentOfTransaction;
+        return shareOfTransaction;
     }
 
     public void setPercentOfTransaction(Double percentOfTransaction) {
-        this.percentOfTransaction = percentOfTransaction;
+        this.shareOfTransaction = percentOfTransaction;
     }
 
     public User getUser() {
