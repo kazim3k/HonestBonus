@@ -1,6 +1,5 @@
 package com.github.groupproject.service.impl;
 
-import com.github.groupproject.entities.EBP;
 import com.github.groupproject.entities.Payment;
 import com.github.groupproject.repository.*;
 import org.assertj.core.api.Assertions;

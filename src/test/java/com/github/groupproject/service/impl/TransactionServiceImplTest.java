@@ -1,8 +1,6 @@
 package com.github.groupproject.service.impl;
 
-import com.github.groupproject.entities.Client;
 import com.github.groupproject.entities.Transaction;
-import com.github.groupproject.entities.User;
 import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.TransactionRepository;
 import com.github.groupproject.repository.UserRepository;

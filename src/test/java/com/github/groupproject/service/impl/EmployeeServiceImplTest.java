@@ -1,8 +1,6 @@
 package com.github.groupproject.service.impl;
 
-import com.github.groupproject.entities.Client;
 import com.github.groupproject.entities.Employee;
-import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.EmployeeRepository;
 import com.github.groupproject.repository.UserRepository;
 import org.assertj.core.api.Assertions;
