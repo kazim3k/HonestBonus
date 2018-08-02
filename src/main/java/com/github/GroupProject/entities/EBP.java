@@ -5,9 +5,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-public class EBP {
+public class EBP extends BaseEntity {
 
-    private String uuid = UUID.randomUUID().toString();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -19,14 +18,6 @@ public class EBP {
     private Client client;
     @OneToMany(mappedBy = "ebp")
     private Set<Payment> payments;
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
 
     public Long getId() {
         return id;

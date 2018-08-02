@@ -7,13 +7,12 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-public class Transaction {
+public class Transaction extends BaseEntity {
 
-    private String uuid= UUID.randomUUID().toString();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Client client;
     @OneToMany(mappedBy = "transaction")
     private Set<Payment> payments;
@@ -29,14 +28,6 @@ public class Transaction {
 
     public Long getId() {
         return id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public Client getClient() {

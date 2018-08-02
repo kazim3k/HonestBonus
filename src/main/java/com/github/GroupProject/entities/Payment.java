@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-public class Payment {
+public class Payment extends BaseEntity {
 
-    private String uuid = UUID.randomUUID().toString();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -18,14 +18,6 @@ public class Payment {
     @ManyToOne
     private EBP ebp;
 
-
-    public String getUUID() {
-        return uuid;
-    }
-
-    public void setUUID(String UUID) {
-        this.uuid = UUID;
-    }
 
     public Long getId() {
         return id;

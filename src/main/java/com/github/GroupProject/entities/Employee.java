@@ -5,8 +5,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-public class Employee {
-    private String uuid = UUID.randomUUID().toString();
+public class Employee extends BaseEntity {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -18,9 +19,6 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private Set<EBP> ebps;
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
 
 
 
@@ -46,10 +44,6 @@ public class Employee {
         this.ebps = ebps;
     }
 
-
-    public String getUuid() {
-        return uuid;
-    }
 
     public Long getId() {
         return id;

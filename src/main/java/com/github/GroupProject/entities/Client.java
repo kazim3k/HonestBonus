@@ -5,15 +5,15 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-public class Client {
+public class Client extends BaseEntity {
 
 
-    private String uuid = UUID.randomUUID().toString();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String clientName;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User user;
     @OneToMany(mappedBy = "client")
     private Set<Transaction> transactions;
@@ -44,14 +44,6 @@ public class Client {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public Long getId() {
