@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 public interface ClientService {
-    void create(String clientName, String userUuid);
+    String create(String clientName, String userUuid);
 
     Set<ClientDto> findAll();
 }

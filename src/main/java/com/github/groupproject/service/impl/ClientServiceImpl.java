@@ -24,11 +24,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void create(String clientName, String userUuid) {
+    public String create(String clientName, String userUuid) {
         Client client = new Client();
         client.setClientName(clientName);
         client.setUser(userRepository.findOneByUuid(userUuid));
         clientRepository.save(client);
+        return client.getUuid();
     }
 
     @Override

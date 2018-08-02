@@ -5,6 +5,6 @@ import com.github.groupproject.dto.TransactionDto;
 import java.util.Set;
 
 public interface TransactionService {
-    void create(String clientUuid);
+    String create(String clientUuid);
     Set<TransactionDto> findAll();
 }

@@ -26,10 +26,11 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public void create(String clientUuid) {
+    public String create(String clientUuid) {
         Transaction transaction = new Transaction();
         transaction.setClient(clientRepository.findOneByUuid(clientUuid));
         transactionRepository.save(transaction);
+        return transaction.getUuid();
     }
 
     @Override

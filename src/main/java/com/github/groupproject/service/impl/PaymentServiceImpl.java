@@ -27,11 +27,12 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public void create(String uuidtransaction, String ebpUuid) {
+    public String create(String transactionUuid, String ebpUuid) {
         Payment payment = new Payment();
-        payment.setTransaction(transactionRepository.findOneByUuid(uuidtransaction));
+        payment.setTransaction(transactionRepository.findOneByUuid(transactionUuid));
         payment.setEbp(ebpRepository.findOneByUuid(ebpUuid));
         paymentRepository.save(payment);
+        return payment.getUuid();
     }
 
     @Override

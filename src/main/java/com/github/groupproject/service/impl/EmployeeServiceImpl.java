@@ -24,13 +24,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void create(String firstName, String lastName, String email, String userUuid) {
+    public String create(String firstName, String lastName, String email, String userUuid) {
         Employee employee = new Employee();
         employee.setFirstName(firstName);
         employee.setLastName(lastName);
         employee.setEmail(email);
         employee.setUser(userRepository.findOneByUuid(userUuid));
         employeeRepository.save(employee);
+        return employee.getUuid();
     }
 
     @Override

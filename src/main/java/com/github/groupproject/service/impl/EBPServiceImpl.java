@@ -30,12 +30,13 @@ public class EBPServiceImpl implements EBPService {
     }
 
     @Override
-    public void create(String bonusUuid, String employeeUuid, String clientUuid) {
+    public String create(String bonusUuid, String employeeUuid, String clientUuid) {
         EBP ebp = new EBP();
         ebp.setBonus(bonusRepository.findOneByUuid(bonusUuid));
         ebp.setEmployee(employeeRepository.findOneByUuid(employeeUuid));
         ebp.setClient(clientRepository.findOneByUuid(clientUuid));
         ebpRepository.save(ebp);
+        return ebp.getUuid();
     }
 
     @Override
