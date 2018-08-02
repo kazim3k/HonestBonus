@@ -1,5 +1,6 @@
 package com.github.GroupProject.service.Impl;
 
+import com.github.GroupProject.dto.TransactionDto;
 import com.github.GroupProject.entities.Transaction;
 import com.github.GroupProject.repository.ClientRepository;
 import com.github.GroupProject.repository.TransactionRepository;
@@ -7,6 +8,9 @@ import com.github.GroupProject.repository.UserRepository;
 import com.github.GroupProject.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TransactionServiceImpl implements TransactionService{
@@ -27,5 +31,12 @@ public class TransactionServiceImpl implements TransactionService{
         Transaction transaction = new Transaction();
         transaction.setClient(clientRepository.findOneByUuid(clientUuid));
         transactionRepository.save(transaction);
+    }
+
+    @Override
+    public Set<TransactionDto> findAll() {
+        return transactionRepository.findAllBy().stream()
+                .map(TransactionDto::new)
+                .collect(Collectors.toSet());
     }
 }
