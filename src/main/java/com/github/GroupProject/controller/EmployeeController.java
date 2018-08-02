@@ -1,11 +1,12 @@
 package com.github.GroupProject.controller;
 
+import com.github.GroupProject.dto.EmployeeDto;
+import com.github.GroupProject.entities.Employee;
 import com.github.GroupProject.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/employees")
@@ -24,5 +25,10 @@ public class EmployeeController {
                         @RequestParam String email,
                         @RequestParam String userUuid){
         employeeService.create(firstName, lastName, email, userUuid);
+    }
+
+    @GetMapping
+    public Set<EmployeeDto> findAll(){
+        return employeeService.findAll();
     }
 }
