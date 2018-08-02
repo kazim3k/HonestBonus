@@ -4,11 +4,12 @@ package com.github.GroupProject.entities;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 public class Transaction {
 
-    private String uuid;
+    private String uuid= UUID.randomUUID().toString();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

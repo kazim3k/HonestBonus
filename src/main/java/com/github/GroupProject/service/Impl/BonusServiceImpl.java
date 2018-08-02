@@ -20,11 +20,11 @@ public class BonusServiceImpl implements BonusService {
     }
 
     @Override
-    public void create(String name, Double shareOfTransaction, String uuid) {
+    public void create(String name, Double shareOfTransaction, String userUuid) {
         Bonus bonus = new Bonus();
         bonus.setName(name);
         bonus.setPercentOfTransaction(shareOfTransaction);
-        bonus.setUser(userRepository.findOneByUuid(uuid));
+        bonus.setUser(userRepository.findOneByUuid(userUuid));
         bonusRepository.save(bonus);
     }
 }

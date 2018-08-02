@@ -4,5 +4,5 @@ import org.springframework.stereotype.Service;
 
 
 public interface ClientService {
-    void create(String clientName, String uuid);
+    void create(String clientName, String userUuid);
 }

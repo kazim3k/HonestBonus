@@ -20,11 +20,11 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void create(String clientName, String uuid) {
+    public void create(String clientName, String userUuid) {
         Client client = new Client();
 
         client.setClientName(clientName);
-        client.setUser(userRepository.findOneByUuid(uuid));
+        client.setUser(userRepository.findOneByUuid(userUuid));
         clientRepository.save(client);
     }
 }
