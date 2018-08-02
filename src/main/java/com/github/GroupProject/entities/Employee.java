@@ -13,7 +13,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User user;
     @OneToMany(mappedBy = "employee")
     private Set<EBP> ebps;
