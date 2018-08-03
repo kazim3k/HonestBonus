@@ -32,7 +32,7 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public String create(String clientUuid) {
-        LOG.info("Created Transaction witch: "+clientRepository.findOneByUuid(clientUuid).getClientName());
+        LOG.info("Created Transaction: [clientUuid]: "+ clientUuid);
         Transaction transaction = new Transaction();
         transaction.setClient(clientRepository.findOneByUuid(clientUuid));
         transactionRepository.save(transaction);

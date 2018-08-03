@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String create(String companyName, String email) {
-        LOG.info("created Company: "+companyName);
+        LOG.info("Created User: [companyName]: " + companyName + " [email]: " + email);
         User user = new User();
         user.setCompanyName(companyName);
         user.setEmail(email);

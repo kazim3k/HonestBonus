@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String create(String firstName, String lastName, String email, String userUuid) {
-        LOG.info("create Employee: "+firstName);
+        LOG.info("Created Employee: [userUuid]: " + userUuid);
         Employee employee = new Employee();
         employee.setFirstName(firstName);
         employee.setLastName(lastName);

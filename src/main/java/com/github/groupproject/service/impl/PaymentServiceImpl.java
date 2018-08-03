@@ -32,7 +32,7 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public String create(String transactionUuid, String ebpUuid) {
-        LOG.info("Created Payment: "+transactionUuid);
+        LOG.info("Created Payment: [transactionUuid]: " + transactionUuid + " [ebpUuid]: " + ebpUuid);
         Payment payment = new Payment();
         payment.setTransaction(transactionRepository.findOneByUuid(transactionUuid));
         payment.setEbp(ebpRepository.findOneByUuid(ebpUuid));

@@ -26,7 +26,8 @@ public class EBPServiceImpl implements EBPService {
     private ClientRepository clientRepository;
 
     @Autowired
-    public EBPServiceImpl(EBPRepository ebpRepository, BonusRepository bonusRepository, EmployeeRepository employeeRepository, ClientRepository clientRepository) {
+    public EBPServiceImpl(EBPRepository ebpRepository, BonusRepository bonusRepository,
+                          EmployeeRepository employeeRepository, ClientRepository clientRepository) {
         this.ebpRepository = ebpRepository;
         this.bonusRepository = bonusRepository;
         this.employeeRepository = employeeRepository;
@@ -35,9 +36,8 @@ public class EBPServiceImpl implements EBPService {
 
     @Override
     public String create(String bonusUuid, String employeeUuid, String clientUuid) {
-        LOG.info("Created EBP dla pracownika: "+employeeRepository.findOneByUuid(employeeUuid).getEmail()+ " klienta: "
-                +clientRepository.findOneByUuid(clientUuid) + " z bonusem: "
-                +bonusRepository.findOneByUuid(bonusUuid));
+        LOG.info("Created EBP : [employeeUuid]: " + clientUuid + "[bonusUuid]: "
+                + bonusUuid + "[clientUuid]: " + clientUuid);
     EBP ebp = new EBP();
         ebp.setBonus(bonusRepository.findOneByUuid(bonusUuid));
         ebp.setEmployee(employeeRepository.findOneByUuid(employeeUuid));

@@ -30,7 +30,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public String create(String clientName, String userUuid) {
-        LOG.info("created Client: " + clientName);
+        LOG.info("Created Client: [userUuid]: " + userUuid);
         Client client = new Client();
         client.setClientName(clientName);
         client.setUser(userRepository.findOneByUuid(userUuid));
