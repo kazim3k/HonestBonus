@@ -22,23 +22,17 @@ public class BonusServiceImplTest {
     @Test
     public void whenCreatingBonus_ThenBonusExist() {
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository);
         BonusServiceImpl bonusService = new BonusServiceImpl(bonusRepository, userRepository);
 
-        String userUuid = userService.create("Brand24","bran@24.pl");
-        String bonustUuid = bonusService.create("1 kontakt",0.05,userUuid);
-
+        String bonustUuid = bonusService.create("1 kontakt",0.05,
+                30, "uuid");
 
         Bonus bonus = bonusRepository.findOneByUuid(bonustUuid);
         Assertions.assertThat(bonus)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("name","1 kontakt")
                 .hasFieldOrPropertyWithValue("shareOfTransaction",0.05)
-                .hasFieldOrPropertyWithValue("user",userRepository.findOneByUuid(userUuid));
-
-
-
-
-
+                .hasFieldOrPropertyWithValue("timeOutInDays",30)
+                .hasFieldOrPropertyWithValue("user",userRepository.findOneByUuid("uuid"));
     }
 }

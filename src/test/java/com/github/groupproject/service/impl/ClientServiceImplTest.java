@@ -22,16 +22,14 @@ public class ClientServiceImplTest {
     @Test
     public void whenCreatingClient_ThenClientExists() {
         ClientServiceImpl clientService = new ClientServiceImpl(clientRepository, userRepository);
-        UserServiceImpl userService = new UserServiceImpl(userRepository);
 
-        String userUuid = userService.create("Brand24","bran@24.pl");
-        String clientUuid = clientService.create("Microsoft",userUuid);
+        String clientUuid = clientService.create("Microsoft","uuid");
 
         Client client = clientRepository.findOneByUuid(clientUuid);
         Assertions.assertThat(client)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("clientName", "Microsoft")
-                .hasFieldOrPropertyWithValue("user",userRepository.findOneByUuid(userUuid));
+                .hasFieldOrPropertyWithValue("user",userRepository.findOneByUuid("uuid"));
     }
 
     //TODO custom matcher (harmcrest)

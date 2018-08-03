@@ -21,8 +21,9 @@ public class BonusController {
     @PostMapping
     public void create(@RequestParam String name,
                        @RequestParam Double shareOfTransaction,
+                       @RequestParam Integer timeOutInDays,
                        @RequestParam String userUuid) {
-        bonusService.create(name,shareOfTransaction,userUuid);
+        bonusService.create(name,shareOfTransaction,timeOutInDays,userUuid);
     }
 
     @GetMapping

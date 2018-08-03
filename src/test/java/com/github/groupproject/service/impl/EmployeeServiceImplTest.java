@@ -22,11 +22,9 @@ public class EmployeeServiceImplTest {
     @Test
     public void whenCreatingEmployee_ThenEmployeeExists() {
         EmployeeServiceImpl employeeService = new EmployeeServiceImpl(userRepository, employeeRepository);
-        UserServiceImpl userService = new UserServiceImpl(userRepository);
 
-        String userUuid = userService.create("Brand24","bran@24.pl");
         String employeeUuid = employeeService.create("Michal","Kowalski",
-                "kowalski@24.pl",userUuid);
+                "kowalski@24.pl","uuid");
 
         Employee employee = employeeRepository.findOneByUuid(employeeUuid);
         Assertions.assertThat(employee)
@@ -34,6 +32,6 @@ public class EmployeeServiceImplTest {
                 .hasFieldOrPropertyWithValue("firstName", "Michal")
                 .hasFieldOrPropertyWithValue("lastName", "Kowalski")
                 .hasFieldOrPropertyWithValue("email", "kowalski@24.pl")
-                .hasFieldOrPropertyWithValue("user",userRepository.findOneByUuid(userUuid));
+                .hasFieldOrPropertyWithValue("user",userRepository.findOneByUuid("uuid"));
     }
 }

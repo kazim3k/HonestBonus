@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface BonusService {
 
-    String create(String name, Double shareOfTransaction, String userUuid);
+    String create(String name, Double shareOfTransaction, Integer timeOutInDays, String userUuid);
 
     Set<BonusDto> findAll();
 }

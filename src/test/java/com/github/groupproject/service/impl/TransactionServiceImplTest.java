@@ -15,8 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 public class TransactionServiceImplTest {
 
-    @Autowired
-    private UserRepository userRepository;
+
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
@@ -24,23 +23,16 @@ public class TransactionServiceImplTest {
     @Test
     public void whenCreatingTransaction_ThenTransactionExist() {
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository);
-        ClientServiceImpl clientService = new ClientServiceImpl(clientRepository, userRepository);
         TransactionServiceImpl transactionService = new TransactionServiceImpl(transactionRepository,
                                                     clientRepository);
 
-        String userUuid = userService.create("Brand24","bran@24.pl");
-        String clientUuid = clientService.create("Microsoft",userUuid);
-        String transactionUuid = transactionService.create(clientUuid);
+        String transactionUuid = transactionService.create("uuid1");
 
         Transaction transaction = transactionRepository.findOneByUuid(transactionUuid);
         Assertions.assertThat(transaction)
                 .isNotNull()
-                .hasFieldOrPropertyWithValue("client",clientRepository.findOneByUuid(clientUuid));
-
-
-
-
+                .hasFieldOrPropertyWithValue("client",
+                                                clientRepository.findOneByUuid("uuid1"));
 
     }
 }

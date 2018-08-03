@@ -13,8 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 public class EBPServiceImplTest {
 
-    @Autowired
-    private UserRepository userRepository;
+
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
@@ -26,29 +25,20 @@ public class EBPServiceImplTest {
     @Test
     public void whenCreatingEBP_ThenEBPExist() {
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository);
-        ClientServiceImpl clientService = new ClientServiceImpl(clientRepository, userRepository);
-        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(userRepository,
-                                                    employeeRepository);
-        BonusServiceImpl bonusService = new BonusServiceImpl(bonusRepository, userRepository);
         EBPServiceImpl ebpService = new EBPServiceImpl(ebpRepository,bonusRepository,
                                                 employeeRepository, clientRepository);
 
-        String userUuid = userService.create("Brand24","bran@24.pl");
-        String clientUuid = clientService.create("Microsoft",userUuid);
-        String emplyeeUuid =employeeService.create("Michal","Kowalski",
-                "kowalski@24.pl",userUuid);
-        String bonustUuid = bonusService.create("1 kontakt",0.05,userUuid);
-        String ebpUuid = ebpService.create(bonustUuid,emplyeeUuid,clientUuid);
+        String ebpUuid = ebpService.create("uuid2",
+                    "uuid3",     "uuid1");
         EBP ebp = ebpRepository.findOneByUuid(ebpUuid);
         Assertions.assertThat(ebp)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("employee",employeeRepository.
-                                                    findOneByUuid(emplyeeUuid))
+                                                    findOneByUuid("uuid3"))
                 .hasFieldOrPropertyWithValue("client",clientRepository.
-                                                    findOneByUuid(clientUuid))
+                                                    findOneByUuid("uuid1"))
                 .hasFieldOrPropertyWithValue("bonus",bonusRepository.
-                                                    findOneByUuid(bonustUuid));
+                                                    findOneByUuid("uuid2"));
 
 
 

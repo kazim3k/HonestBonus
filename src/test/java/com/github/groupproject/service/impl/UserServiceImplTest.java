@@ -29,6 +29,7 @@ public class UserServiceImplTest {
                 .hasFieldOrPropertyWithValue("email", "pinokio@brand24.pl");
     }
 
+
     //TODO custom matcher (harmcrest)
 
 

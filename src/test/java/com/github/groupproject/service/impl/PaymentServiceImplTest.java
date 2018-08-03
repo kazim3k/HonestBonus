@@ -1,7 +1,9 @@
 package com.github.groupproject.service.impl;
 
 import com.github.groupproject.entities.Payment;
-import com.github.groupproject.repository.*;
+import com.github.groupproject.repository.EBPRepository;
+import com.github.groupproject.repository.PaymentRepository;
+import com.github.groupproject.repository.TransactionRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,14 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 public class PaymentServiceImplTest {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ClientRepository clientRepository;
-    @Autowired
-    private EmployeeRepository employeeRepository;
-    @Autowired
-    private BonusRepository bonusRepository;
+
     @Autowired
     private EBPRepository ebpRepository;
     @Autowired
@@ -30,34 +25,17 @@ public class PaymentServiceImplTest {
     @Test
     public void whenCreatingPayment_ThenPaymentExist() {
 
-        UserServiceImpl userService = new UserServiceImpl(userRepository);
-        ClientServiceImpl clientService = new ClientServiceImpl(clientRepository, userRepository);
-        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(userRepository,
-                                                employeeRepository);
-        BonusServiceImpl bonusService = new BonusServiceImpl(bonusRepository, userRepository);
-        EBPServiceImpl ebpService = new EBPServiceImpl(ebpRepository,bonusRepository,
-                                        employeeRepository, clientRepository);
-        TransactionServiceImpl transactionService = new TransactionServiceImpl(transactionRepository,
-                                                        clientRepository);
         PaymentServiceImpl paymentService = new PaymentServiceImpl(paymentRepository,
                                                 transactionRepository,ebpRepository);
 
-        String userUuid = userService.create("Brand24","bran@24.pl");
-        String clientUuid = clientService.create("Microsoft",userUuid);
-        String transactionUuid = transactionService.create(clientUuid);
-        String emplyeeUuid =employeeService.create("Michal","Kowalski",
-                "kowalski@24.pl",userUuid);
-        String bonustUuid = bonusService.create("1 kontakt",0.05,userUuid);
-        String ebpUuid = ebpService.create(bonustUuid,emplyeeUuid,clientUuid);
-        String paymnentUuid = paymentService.create(transactionUuid,ebpUuid);
-
-        Payment payment = paymentRepository.findOneByUuid(paymnentUuid);
+        String paymentUuid = paymentService.create("uuid4","uuid5");
+        Payment payment = paymentRepository.findOneByUuid(paymentUuid);
         Assertions.assertThat(payment)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("transaction",transactionRepository.
-                        findOneByUuid(transactionUuid))
+                        findOneByUuid("uuid4"))
                 .hasFieldOrPropertyWithValue("ebp",ebpRepository.
-                        findOneByUuid(ebpUuid));
+                        findOneByUuid("uuid5"));
 
     }
 }

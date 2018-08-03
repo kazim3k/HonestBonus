@@ -12,6 +12,7 @@ public class Bonus extends BaseEntity{
     private Long id;
     private String name;
     private Double shareOfTransaction;
+    private Integer timeOutInDays;
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "bonus")
@@ -53,5 +54,17 @@ public class Bonus extends BaseEntity{
 
     public void setEbps(Set<EBP> ebps) {
         this.ebps = ebps;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getTimeOutInDays() {
+        return timeOutInDays;
+    }
+
+    public void setTimeOutInDays(Integer timeOutInDays) {
+        this.timeOutInDays = timeOutInDays;
     }
 }
