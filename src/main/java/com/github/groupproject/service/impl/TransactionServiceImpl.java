@@ -5,14 +5,19 @@ import com.github.groupproject.entities.Transaction;
 import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.TransactionRepository;
 import com.github.groupproject.service.TransactionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.rmi.runtime.Log;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class TransactionServiceImpl implements TransactionService{
+
+    Logger LOG = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     private TransactionRepository transactionRepository;
     private ClientRepository clientRepository;
@@ -27,6 +32,7 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public String create(String clientUuid) {
+        LOG.info("Created Transaction witch: "+clientRepository.findOneByUuid(clientUuid).getClientName());
         Transaction transaction = new Transaction();
         transaction.setClient(clientRepository.findOneByUuid(clientUuid));
         transactionRepository.save(transaction);

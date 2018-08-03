@@ -6,6 +6,8 @@ import com.github.groupproject.repository.EBPRepository;
 import com.github.groupproject.repository.PaymentRepository;
 import com.github.groupproject.repository.TransactionRepository;
 import com.github.groupproject.service.PaymentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class PaymentServiceImpl implements PaymentService{
+
+    Logger LOG = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     private PaymentRepository paymentRepository;
     private TransactionRepository transactionRepository;
@@ -28,6 +32,7 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public String create(String transactionUuid, String ebpUuid) {
+        LOG.info("Created Payment: "+transactionUuid);
         Payment payment = new Payment();
         payment.setTransaction(transactionRepository.findOneByUuid(transactionUuid));
         payment.setEbp(ebpRepository.findOneByUuid(ebpUuid));

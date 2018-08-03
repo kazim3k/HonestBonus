@@ -7,6 +7,8 @@ import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.EBPRepository;
 import com.github.groupproject.repository.EmployeeRepository;
 import com.github.groupproject.service.EBPService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class EBPServiceImpl implements EBPService {
+
+    Logger LOG = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     private EBPRepository ebpRepository;
     private BonusRepository bonusRepository;
@@ -31,13 +35,16 @@ public class EBPServiceImpl implements EBPService {
 
     @Override
     public String create(String bonusUuid, String employeeUuid, String clientUuid) {
-        EBP ebp = new EBP();
+        LOG.info("Created EBP dla pracownika: "+employeeRepository.findOneByUuid(employeeUuid).getEmail()+ " klienta: "
+                +clientRepository.findOneByUuid(clientUuid) + " z bonusem: "
+                +bonusRepository.findOneByUuid(bonusUuid));
+    EBP ebp = new EBP();
         ebp.setBonus(bonusRepository.findOneByUuid(bonusUuid));
         ebp.setEmployee(employeeRepository.findOneByUuid(employeeUuid));
         ebp.setClient(clientRepository.findOneByUuid(clientUuid));
         ebpRepository.save(ebp);
         return ebp.getUuid();
-    }
+}
 
     @Override
     public Set<EBPDto> findAll() {
