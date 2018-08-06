@@ -46,4 +46,32 @@ public class PaymentServiceImpl implements PaymentService{
                 .map(PaymentDto :: new )
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public Set<PaymentDto> findAllByEBPClientUserUuid(String userUuid) {
+        return paymentRepository.findAllByEbpClientUserUuid(userUuid).stream()
+                .map(PaymentDto::new)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<PaymentDto> findAllByEbpClientUuid(String clientUuid) {
+        return paymentRepository.findAllByEbpClientUuid(clientUuid).stream()
+                .map(PaymentDto::new)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<PaymentDto> findAllByEbpEmployeeUuid(String employeeUuid) {
+        return paymentRepository.findAllByEbpEmployeeUuid(employeeUuid).stream()
+                .map(PaymentDto::new)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<PaymentDto> findAllByEbpBonusUuid(String bonusUuid) {
+        return paymentRepository.findAllByEbpBonusUuid(bonusUuid).stream()
+                .map(PaymentDto::new)
+                .collect(Collectors.toSet());
+    }
 }

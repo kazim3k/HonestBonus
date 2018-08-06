@@ -11,6 +11,10 @@ import java.util.Set;
 public interface PaymentRepository extends CrudRepository<Payment, Long>{
     Payment findOneByUuid(String paymentUuid);
     Set<Payment> findAllBy ();
+    Set<Payment> findAllByEbpClientUserUuid(String userUuid);
+    Set<Payment> findAllByEbpClientUuid(String clientUuid);
+    Set<Payment> findAllByEbpEmployeeUuid(String employeeUuid);
+    Set<Payment> findAllByEbpBonusUuid(String bonusUuid);
 
 
 

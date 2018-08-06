@@ -46,4 +46,11 @@ public class BonusServiceImpl implements BonusService {
                 .map(BonusDto::new)
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public Set<BonusDto> findAllByUserUuid(String userUuid) {
+        return bonusRepository.findAllByUserUuid(userUuid).stream()
+                .map(BonusDto::new)
+                .collect(Collectors.toSet());
+    }
 }

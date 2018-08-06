@@ -1,5 +1,6 @@
 package com.github.groupproject.controller;
 
+import com.github.groupproject.dto.ClientDto;
 import com.github.groupproject.dto.EBPDto;
 import com.github.groupproject.service.EBPService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,15 @@ public class EBPController {
     @GetMapping
     public Set<EBPDto> findAll() {
         return ebpService.findAll();
+    }
+
+    @GetMapping("byUser_/{userUuid}")
+    public Set<EBPDto> findAllByClientUserUuid(@PathVariable String userUuid){
+        return ebpService.findAllByClientUserUuid(userUuid);
+    }
+
+    @GetMapping("byEmployee_/{employeeUuid}")
+    public Set<EBPDto> findAllByEmployeeUuid(@PathVariable String employeeUuid){
+        return ebpService.findAllByEmployeeUuid(employeeUuid);
     }
 }

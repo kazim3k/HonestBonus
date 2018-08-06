@@ -1,6 +1,7 @@
 package com.github.groupproject.controller;
 
 import com.github.groupproject.dto.ClientDto;
+import com.github.groupproject.dto.EmployeeDto;
 import com.github.groupproject.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,5 +28,10 @@ public class ClientController {
     @GetMapping
     public Set<ClientDto> findAll(){
         return clientService.findAll();
+    }
+
+    @GetMapping("/{userUuid}")
+    public Set<ClientDto> findAllByUserUuid(@PathVariable String userUuid){
+        return clientService.findAllByUserUuid(userUuid);
     }
 }

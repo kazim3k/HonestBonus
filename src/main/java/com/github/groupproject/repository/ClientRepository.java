@@ -12,4 +12,6 @@ public interface ClientRepository extends CrudRepository<Client,Long> {
 
     Set<Client> findAllBy();
 
+    Set<Client> findAllByUserUuid(String userUuid);
+
 }

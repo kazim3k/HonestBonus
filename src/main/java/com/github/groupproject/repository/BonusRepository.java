@@ -12,4 +12,6 @@ public interface BonusRepository extends CrudRepository<Bonus,Long> {
     Bonus findOneByUuid(String bonusUuid);
 
     Set<Bonus> findAllBy();
+
+    Set<Bonus> findAllByUserUuid(String userUuid);
 }

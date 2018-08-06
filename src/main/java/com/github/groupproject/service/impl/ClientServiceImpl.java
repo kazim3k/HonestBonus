@@ -44,4 +44,13 @@ public class ClientServiceImpl implements ClientService {
                 .map(ClientDto::new)
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public Set<ClientDto> findAllByUserUuid(String userUuid) {
+        return clientRepository.findAllByUserUuid(userUuid).stream()
+                .map(ClientDto::new)
+                .collect(Collectors.toSet());
+    }
+
+
 }

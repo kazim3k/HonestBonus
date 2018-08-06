@@ -4,12 +4,12 @@ import com.github.groupproject.dto.TransactionDto;
 import com.github.groupproject.entities.Transaction;
 import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.TransactionRepository;
+import com.github.groupproject.repository.UserRepository;
 import com.github.groupproject.service.TransactionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,6 +21,7 @@ public class TransactionServiceImpl implements TransactionService{
 
     private TransactionRepository transactionRepository;
     private ClientRepository clientRepository;
+
 
     @Autowired
     public TransactionServiceImpl(TransactionRepository transactionRepository,
@@ -42,6 +43,20 @@ public class TransactionServiceImpl implements TransactionService{
     @Override
     public Set<TransactionDto> findAll() {
         return transactionRepository.findAllBy().stream()
+                .map(TransactionDto::new)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<TransactionDto> findAllByClientUuid(String clientUuid) {
+        return transactionRepository.findAllByClientUuid(clientUuid).stream()
+                .map(TransactionDto::new)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<TransactionDto> findAllByClientUserUuid(String userUuid) {
+        return transactionRepository.findAllByClientUserUuid(userUuid).stream()
                 .map(TransactionDto::new)
                 .collect(Collectors.toSet());
     }

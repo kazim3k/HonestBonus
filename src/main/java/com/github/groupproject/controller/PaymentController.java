@@ -1,6 +1,7 @@
 package com.github.groupproject.controller;
 
 
+import com.github.groupproject.dto.EBPDto;
 import com.github.groupproject.dto.PaymentDto;
 import com.github.groupproject.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,27 @@ public class PaymentController {
     @GetMapping
     Set<PaymentDto> findAll (){
          return paymentService.findAll();
-
-
     }
+
+    @GetMapping("byUser_/{userUuid}")
+    public Set<PaymentDto> findAllByEBPClientUserUuid(@PathVariable String userUuid){
+        return paymentService.findAllByEBPClientUserUuid(userUuid);
+    }
+
+    @GetMapping("byClient_/{clientUuid}")
+    public Set<PaymentDto> findAllByEbpClientUuid(@PathVariable String clientUuid){
+        return paymentService.findAllByEbpClientUuid(clientUuid);
+    }
+
+    @GetMapping("byEmployee_/{employeeUuid}")
+    public Set<PaymentDto> findAllByEbpEmployeeUuid(@PathVariable String employeeUuid){
+        return paymentService.findAllByEbpEmployeeUuid(employeeUuid);
+    }
+
+    @GetMapping("byBonus_/{bonusUuid}")
+    public Set<PaymentDto> findAllByEbpBonusUuid(@PathVariable String bonusUuid){
+        return paymentService.findAllByEbpBonusUuid(bonusUuid);
+    }
+
 
 }

@@ -3,7 +3,6 @@ package com.github.groupproject.service.impl;
 import com.github.groupproject.entities.Transaction;
 import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.TransactionRepository;
-import com.github.groupproject.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

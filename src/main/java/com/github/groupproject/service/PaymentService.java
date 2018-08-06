@@ -9,4 +9,11 @@ public interface PaymentService {
 
     Set<PaymentDto> findAll();
 
+    Set<PaymentDto> findAllByEBPClientUserUuid(String userUuid);
+
+    Set<PaymentDto> findAllByEbpClientUuid(String clientUuid);
+
+    Set<PaymentDto> findAllByEbpEmployeeUuid(String employeeUuid);
+
+    Set<PaymentDto> findAllByEbpBonusUuid(String bonusUuid);
 }

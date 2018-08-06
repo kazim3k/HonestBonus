@@ -9,5 +9,7 @@ public interface BonusService {
     String create(String name, Double shareOfTransaction, Integer timeOutInDays, String userUuid);
 
     Set<BonusDto> findAll();
+
+    Set<BonusDto> findAllByUserUuid(String userUuid);
 }
 

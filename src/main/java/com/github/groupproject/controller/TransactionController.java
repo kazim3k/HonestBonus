@@ -1,5 +1,6 @@
 package com.github.groupproject.controller;
 
+import com.github.groupproject.dto.ClientDto;
 import com.github.groupproject.dto.TransactionDto;
 import com.github.groupproject.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,15 @@ public class TransactionController {
     @GetMapping
     public Set<TransactionDto> findAll(){
         return transactionService.findAll();
+    }
+
+    @GetMapping("/byClient_{clientUuid}")
+    public Set<TransactionDto> findAllByClientUuid(@PathVariable String clientUuid){
+        return transactionService.findAllByClientUuid(clientUuid);
+    }
+
+    @GetMapping("/byUser_{userUuid}")
+    public Set<TransactionDto> findAllByClientUserUuid(@PathVariable String userUuid){
+        return transactionService.findAllByClientUserUuid(userUuid);
     }
 }

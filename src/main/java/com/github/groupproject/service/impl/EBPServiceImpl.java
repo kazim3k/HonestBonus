@@ -52,4 +52,18 @@ public class EBPServiceImpl implements EBPService {
                 .map(EBPDto::new)
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public Set<EBPDto> findAllByClientUserUuid(String userUuid) {
+        return ebpRepository.findAllByClientUserUuid(userUuid).stream()
+                .map(EBPDto::new)
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<EBPDto> findAllByEmployeeUuid(String employeeUuid) {
+        return ebpRepository.findAllByEmployeeUuid(employeeUuid).stream()
+                .map(EBPDto::new)
+                .collect(Collectors.toSet());
+    }
 }

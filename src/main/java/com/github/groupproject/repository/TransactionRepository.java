@@ -10,4 +10,8 @@ import java.util.Set;
 public interface TransactionRepository extends CrudRepository<Transaction, Long>{
     Transaction findOneByUuid(String transactionUuid);
     Set<Transaction> findAllBy();
+
+    Set<Transaction> findAllByClientUuid(String clientUuid);
+
+    Set<Transaction> findAllByClientUserUuid(String userUuid);
 }

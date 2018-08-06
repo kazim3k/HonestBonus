@@ -1,6 +1,7 @@
 package com.github.groupproject.controller;
 
 import com.github.groupproject.dto.BonusDto;
+import com.github.groupproject.dto.ClientDto;
 import com.github.groupproject.service.BonusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,5 +30,10 @@ public class BonusController {
     @GetMapping
     public Set<BonusDto> findAll(){
         return bonusService.findAll();
+    }
+
+    @GetMapping("/{userUuid}")
+    public Set<BonusDto> findAllByUserUuid(@PathVariable String userUuid){
+        return bonusService.findAllByUserUuid(userUuid);
     }
 }
