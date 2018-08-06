@@ -12,6 +12,8 @@ public interface EmployeeRepository extends CrudRepository<Employee,Long>{
 
     Set<Employee> findAllBy ();
 
+    Set<Employee> findAllByUserUuid(String userUuid);
+
 }
 
 

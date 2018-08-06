@@ -30,4 +30,9 @@ public class EmployeeController {
     public Set<EmployeeDto> findAll(){
         return employeeService.findAll();
     }
+
+    @GetMapping("/{userUuid}")
+    public Set<EmployeeDto> findAllByUserUuid(@PathVariable String userUuid){
+        return employeeService.findByUserUuid(userUuid);
+    }
 }

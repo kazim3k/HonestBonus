@@ -47,4 +47,11 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .collect(Collectors.toSet());
 
     }
+
+    @Override
+    public Set<EmployeeDto> findByUserUuid(String userUuid) {
+        return employeeRepository.findAllByUserUuid(userUuid).stream()
+                .map(EmployeeDto::new)
+                .collect(Collectors.toSet());
+    }
 }
