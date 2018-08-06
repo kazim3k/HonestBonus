@@ -13,7 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/users")
-@Api(value = "User HB" , description = "user requests")
+@Api(value = "User HB panel" , description = "user requests")
 public class UserController {
 
 
