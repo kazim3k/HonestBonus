@@ -20,7 +20,8 @@ public class SwaggerConfig {
     @Bean
     public Docket newsApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("greetings")
+                .useDefaultResponseMessages(false)
+                .groupName("JavaWro9 - team Kazim3k")
                 .apiInfo(apiInfo())
                 .select()
                 .paths(regex("/api.*"))
@@ -32,7 +33,6 @@ public class SwaggerConfig {
                 .title("Honest Bonus API")
                 .description("Spring REST Sample with Swagger")
                 .termsOfServiceUrl("http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm?Open")
-                .contact("JavaWro9 - team Kazim3k")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://github.com/IBM-Bluemix/news-aggregator/blob/master/LICENSE")
                 .version("2.0")

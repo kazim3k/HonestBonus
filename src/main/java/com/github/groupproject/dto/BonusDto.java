@@ -1,13 +1,19 @@
 package com.github.groupproject.dto;
 
 import com.github.groupproject.entities.Bonus;
+import io.swagger.annotations.ApiModelProperty;
 
 public class BonusDto {
 
+    @ApiModelProperty(notes = "API bonus key")
     private String uuid;
+    @ApiModelProperty(notes = "Bonus name")
     private String name;
+    @ApiModelProperty("Share of transaction for employee")
     private Double shareOfTransaction;
+    @ApiModelProperty(notes = "Bonus duration in days")
     private Integer timeOutInDays;
+    @ApiModelProperty(notes = "Company name")
     private String companyName;
 
     public BonusDto(String uuid, String name, Double shareOfTransaction, Integer timeOutInDays, String companyName) {

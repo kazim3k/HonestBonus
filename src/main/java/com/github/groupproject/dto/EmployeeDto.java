@@ -1,13 +1,19 @@
 package com.github.groupproject.dto;
 
 import com.github.groupproject.entities.Employee;
+import io.swagger.annotations.ApiModelProperty;
 
 public class EmployeeDto {
 
+    @ApiModelProperty(notes = "API employee key")
     private String uuid;
+    @ApiModelProperty(notes = "Employee first name")
     private String firstName;
+    @ApiModelProperty(notes = "Employee last name")
     private String lastname;
+    @ApiModelProperty(notes = "Employee email")
     private String email;
+    @ApiModelProperty(notes = "Company name")
     private String companyName;
 
     public EmployeeDto(Employee employee){

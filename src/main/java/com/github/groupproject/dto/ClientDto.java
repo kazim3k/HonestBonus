@@ -1,11 +1,16 @@
 package com.github.groupproject.dto;
 
 import com.github.groupproject.entities.Client;
+import io.swagger.annotations.ApiModelProperty;
+
 
 public class ClientDto {
 
+    @ApiModelProperty(notes = "API client key")
     private String uuid;
+    @ApiModelProperty(notes = "Name of client")
     private String clientName;
+    @ApiModelProperty(notes = "Name of company - user name")
     private String companyName;
 
     public ClientDto(String uuid, String clientName, String companyName) {
