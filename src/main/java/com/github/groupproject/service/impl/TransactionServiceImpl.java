@@ -1,6 +1,7 @@
 package com.github.groupproject.service.impl;
 
 import com.github.groupproject.dto.TransactionDto;
+import com.github.groupproject.entities.Client;
 import com.github.groupproject.entities.Transaction;
 import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.TransactionRepository;
@@ -11,13 +12,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
-public class TransactionServiceImpl implements TransactionService{
+import static java.util.stream.Collectors.toSet;
 
-    Logger LOG = LoggerFactory.getLogger(ClientServiceImpl.class);
+@Service
+public class TransactionServiceImpl implements TransactionService {
+
+    private Logger LOG = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     private TransactionRepository transactionRepository;
     private ClientRepository clientRepository;
@@ -28,15 +32,21 @@ public class TransactionServiceImpl implements TransactionService{
                                   ClientRepository clientRepository) {
         this.transactionRepository = transactionRepository;
         this.clientRepository = clientRepository;
-
     }
 
     @Override
-    public String create(String clientUuid) {
-        LOG.info("Created Transaction: [clientUuid]: "+ clientUuid);
+    public String create(String clientUuid, BigDecimal amountOfTransaction) {
+        LOG.info("Created Transaction: [clientUuid]: " + clientUuid
+                + ", [amount]: " + amountOfTransaction);
+        Client client = clientRepository.findOneByUuid(clientUuid);
+        if (client == null || amountOfTransaction.compareTo(BigDecimal.ZERO) < 0) {
+            throw new RuntimeException();
+        }
         Transaction transaction = new Transaction();
-        transaction.setClient(clientRepository.findOneByUuid(clientUuid));
-        transactionRepository.save(transaction);
+        transaction.setClient(client);
+        transaction.setAmountOfTransaction(amountOfTransaction);
+        transaction = transactionRepository.save(transaction);
+
         return transaction.getUuid();
     }
 
@@ -44,20 +54,20 @@ public class TransactionServiceImpl implements TransactionService{
     public Set<TransactionDto> findAll() {
         return transactionRepository.findAllBy().stream()
                 .map(TransactionDto::new)
-                .collect(Collectors.toSet());
+                .collect(toSet());
     }
 
     @Override
     public Set<TransactionDto> findAllByClientUuid(String clientUuid) {
         return transactionRepository.findAllByClientUuid(clientUuid).stream()
                 .map(TransactionDto::new)
-                .collect(Collectors.toSet());
+                .collect(toSet());
     }
 
     @Override
     public Set<TransactionDto> findAllByClientUserUuid(String userUuid) {
         return transactionRepository.findAllByClientUserUuid(userUuid).stream()
                 .map(TransactionDto::new)
-                .collect(Collectors.toSet());
+                .collect(toSet());
     }
 }

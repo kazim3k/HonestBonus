@@ -3,6 +3,7 @@ package com.github.groupproject.entities;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,16 @@ public class Transaction extends BaseEntity {
     private Client client;
     @OneToMany(mappedBy = "transaction")
     private Set<Payment> payments;
+    @Column(name = "amount")
+    private BigDecimal amountOfTransaction;
 
+    public BigDecimal getAmountOfTransaction() {
+        return amountOfTransaction;
+    }
+
+    public void setAmountOfTransaction(BigDecimal amountOfTransaction) {
+        this.amountOfTransaction = amountOfTransaction;
+    }
 
     public Set<Payment> getPayments() {
         return payments;

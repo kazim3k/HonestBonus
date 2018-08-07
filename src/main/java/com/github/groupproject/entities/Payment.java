@@ -3,6 +3,7 @@ package com.github.groupproject.entities;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Payment extends BaseEntity {
@@ -16,7 +17,16 @@ public class Payment extends BaseEntity {
     private Transaction transaction;
     @ManyToOne
     private EBP ebp;
+    private BigDecimal paycheck;
 
+
+    public BigDecimal getPaycheck() {
+        return paycheck;
+    }
+
+    public void setPaycheck(BigDecimal paycheck) {
+        this.paycheck = paycheck;
+    }
 
     public Long getId() {
         return id;

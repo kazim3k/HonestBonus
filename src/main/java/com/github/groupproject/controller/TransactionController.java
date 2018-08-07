@@ -6,6 +6,7 @@ import com.github.groupproject.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 @RestController
@@ -20,8 +21,8 @@ public class TransactionController {
     }
 
     @PostMapping
-    public void create(@RequestParam String clientUuid){
-        transactionService.create(clientUuid);
+    public void create(@RequestParam String clientUuid, @RequestParam BigDecimal amountOfTransaction){
+        transactionService.create(clientUuid,amountOfTransaction);
     }
 
     @GetMapping

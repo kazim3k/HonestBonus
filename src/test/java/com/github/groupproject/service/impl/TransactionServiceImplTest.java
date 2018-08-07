@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class TransactionServiceImplTest {
@@ -25,13 +27,14 @@ public class TransactionServiceImplTest {
         TransactionServiceImpl transactionService = new TransactionServiceImpl(transactionRepository,
                                                     clientRepository);
 
-        String transactionUuid = transactionService.create("uuid1");
+        String transactionUuid = transactionService.create("uuid1",new BigDecimal("100000"));
 
         Transaction transaction = transactionRepository.findOneByUuid(transactionUuid);
         Assertions.assertThat(transaction)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("client",
-                                                clientRepository.findOneByUuid("uuid1"));
+                                                clientRepository.findOneByUuid("uuid1"))
+                .hasFieldOrPropertyWithValue("amountOfTransaction", new BigDecimal("100000"));
 
     }
 }

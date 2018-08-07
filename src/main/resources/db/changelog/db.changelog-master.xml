@@ -64,6 +64,7 @@
             <column name="uuid" type="VARCHAR(255)"/>
             <column name="ebp_id" type="BIGINT"/>
             <column name="transaction_id" type="BIGINT"/>
+            <column name="paycheck" type="NUMERIC"/>
         </createTable>
     </changeSet>
     <changeSet author="Miguel (generated)" id="1533316161151-7">
@@ -73,6 +74,7 @@
             </column>
             <column name="created_at" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
             <column name="uuid" type="VARCHAR(255)"/>
+            <column name="amount" type="NUMERIC"/>
             <column name="client_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
@@ -189,6 +191,7 @@
             <column name="id" value="14"/>
             <column name="uuid" value="uuid4"/>
             <column name="client_id" value="11"/>
+            <column name="amount" value="100000"/>
         </insert>
     </changeSet>
 
@@ -276,6 +279,7 @@
             <column name="id" value="23"/>
             <column name="uuid" value="uuid13"/>
             <column name="client_id" value="19"/>
+            <column name="amount" value="100000"/>
         </insert>
     </changeSet>
 
@@ -297,6 +301,10 @@
             <column name="transaction_id" value="14"/>
         </insert>
     </changeSet>
+
+
+
+
 
 
 
