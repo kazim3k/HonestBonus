@@ -4,6 +4,7 @@ import com.github.groupproject.dto.PaymentDto;
 import com.github.groupproject.entities.EBP;
 import com.github.groupproject.entities.Payment;
 import com.github.groupproject.entities.Transaction;
+import com.github.groupproject.exceptions.BadRequestException;
 import com.github.groupproject.repository.EBPRepository;
 import com.github.groupproject.repository.PaymentRepository;
 import com.github.groupproject.repository.TransactionRepository;
@@ -36,12 +37,16 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public String create(String transactionUuid, String ebpUuid) {
-        LOG.info("Created Payment: [transactionUuid]: " + transactionUuid + " [ebpUuid]: " + ebpUuid);
         Transaction transaction = transactionRepository.findOneByUuid(transactionUuid);
         EBP ebp = ebpRepository.findOneByUuid(ebpUuid);
         if (transaction == null || ebp == null) {
-            throw new RuntimeException();  //TODO - personalizacja wyjątku, LOG.error
+            LOG.error("ERROR: [Request transactionUuid]: " + transactionUuid +
+                    " [Request ebpUuid]: " + ebpUuid + "[cause]: Bad Request" );
+
+            throw new BadRequestException("Given UUID of transaction or UUID of employee bonus promise" +
+                            "does not exist");
         }
+        LOG.info("Created Payment: [transactionUuid]: " + transactionUuid + " [ebpUuid]: " + ebpUuid);
         Payment payment = new Payment();
         payment.setTransaction(transaction);
         payment.setEbp(ebp);

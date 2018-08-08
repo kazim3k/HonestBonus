@@ -2,6 +2,8 @@ package com.github.groupproject.service.impl;
 
 import com.github.groupproject.dto.BonusDto;
 import com.github.groupproject.entities.Bonus;
+import com.github.groupproject.entities.User;
+import com.github.groupproject.exceptions.BadRequestException;
 import com.github.groupproject.repository.BonusRepository;
 import com.github.groupproject.repository.UserRepository;
 import com.github.groupproject.service.BonusService;
@@ -30,12 +32,18 @@ public class BonusServiceImpl implements BonusService {
     @Override
     public String create(String name, Double shareOfTransaction,
                          Integer timeOutInDays, String userUuid) {
+        User user = userRepository.findOneByUuid(userUuid);
+        if (user == null){
+            LOG.error("ERROR: [Request userUuid]: " + userUuid +
+                    "[cause]: Bad Request" );
+            throw new BadRequestException("Given UUID of user does not exist");
+        }
         LOG.info("Created Bonus: [userUuid]: " + userUuid);
         Bonus bonus = new Bonus();
         bonus.setName(name);
         bonus.setShareOfTransaction(shareOfTransaction);
         bonus.setTimeOutInDays(timeOutInDays);
-        bonus.setUser(userRepository.findOneByUuid(userUuid));
+        bonus.setUser(user);
         bonusRepository.save(bonus);
         return bonus.getUuid();
     }
@@ -49,6 +57,12 @@ public class BonusServiceImpl implements BonusService {
 
     @Override
     public Set<BonusDto> findAllByUserUuid(String userUuid) {
+        User user = userRepository.findOneByUuid(userUuid);
+        if (user == null){
+            LOG.error("ERROR: [Request userUuid]: " + userUuid +
+                    "[cause]: Bad Request" );
+            throw new BadRequestException("Given UUID of user does not exist");
+        }
         return bonusRepository.findAllByUserUuid(userUuid).stream()
                 .map(BonusDto::new)
                 .collect(Collectors.toSet());

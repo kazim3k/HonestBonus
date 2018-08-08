@@ -3,6 +3,7 @@ package com.github.groupproject.service.impl;
 import com.github.groupproject.entities.Transaction;
 import com.github.groupproject.repository.ClientRepository;
 import com.github.groupproject.repository.TransactionRepository;
+import com.github.groupproject.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,11 +22,13 @@ public class TransactionServiceImplTest {
     private ClientRepository clientRepository;
     @Autowired
     private TransactionRepository transactionRepository;
+    @Autowired
+    private UserRepository userRepository;
     @Test
     public void whenCreatingTransaction_ThenTransactionExist() {
 
         TransactionServiceImpl transactionService = new TransactionServiceImpl(transactionRepository,
-                                                    clientRepository);
+                                                    clientRepository, userRepository);
 
         String transactionUuid = transactionService.create("uuid1",new BigDecimal("100000"));
 

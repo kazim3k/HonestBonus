@@ -22,11 +22,14 @@ public class EBPServiceImplTest {
     private BonusRepository bonusRepository;
     @Autowired
     private EBPRepository ebpRepository;
+    @Autowired
+    private UserRepository userRepository;
     @Test
     public void whenCreatingEBP_ThenEBPExist() {
 
         EBPServiceImpl ebpService = new EBPServiceImpl(ebpRepository,bonusRepository,
-                                                employeeRepository, clientRepository);
+                                                employeeRepository, clientRepository,
+                                                    userRepository);
 
         String ebpUuid = ebpService.create("uuid2",
                     "uuid3",     "uuid1");

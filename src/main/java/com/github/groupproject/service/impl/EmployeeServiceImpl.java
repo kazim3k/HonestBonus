@@ -2,6 +2,8 @@ package com.github.groupproject.service.impl;
 
 import com.github.groupproject.dto.EmployeeDto;
 import com.github.groupproject.entities.Employee;
+import com.github.groupproject.entities.User;
+import com.github.groupproject.exceptions.BadRequestException;
 import com.github.groupproject.repository.EmployeeRepository;
 import com.github.groupproject.repository.UserRepository;
 import com.github.groupproject.service.EmployeeService;
@@ -30,12 +32,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String create(String firstName, String lastName, String email, String userUuid) {
+        User user = userRepository.findOneByUuid(userUuid);
+        if (user == null){
+            LOG.error("ERROR: [Request userUuid]: " + userUuid +
+                    "[cause]: Bad Request" );
+            throw new BadRequestException("Given UUID of user does not exist");
+        }
         LOG.info("Created Employee: [userUuid]: " + userUuid);
         Employee employee = new Employee();
         employee.setFirstName(firstName);
         employee.setLastName(lastName);
         employee.setEmail(email);
-        employee.setUser(userRepository.findOneByUuid(userUuid));
+        employee.setUser(user);
         employeeRepository.save(employee);
         return employee.getUuid();
     }
@@ -50,6 +58,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Set<EmployeeDto> findByUserUuid(String userUuid) {
+        User user = userRepository.findOneByUuid(userUuid);
+        if (user == null){
+            LOG.error("ERROR: [Request userUuid]: " + userUuid +
+                    "[cause]: Bad Request" );
+            throw new BadRequestException("Given UUID of user does not exist");
+        }
         return employeeRepository.findAllByUserUuid(userUuid).stream()
                 .map(EmployeeDto::new)
                 .collect(Collectors.toSet());
