@@ -1,15 +1,21 @@
 package com.github.groupproject.dto;
 
 import com.github.groupproject.entities.Payment;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 
 public class PaymentDto {
 
+    @ApiModelProperty(notes = "API payment key")
     private String uuid;
+    @ApiModelProperty(notes = "Employee email")
     private String employeeEmail;
+    @ApiModelProperty(notes = "Bonus name")
     private String bonusName;
+    @ApiModelProperty(notes = "Client name")
     private String clientName;
+    @ApiModelProperty(notes = "Amount of payment for employee")
     private BigDecimal paycheck;
 
     public PaymentDto(String uuid, String employeeEmail,

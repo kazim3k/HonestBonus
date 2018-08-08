@@ -11,7 +11,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/ebps")
-@Api(value = "Employee bonus promise", description = "Get list of employee bonus promises")
+@Api(value = "Employee bonus promise", description = "Get list of employee bonus promises, add EBP")
 public class EBPController {
 
     private EBPService ebpService;
