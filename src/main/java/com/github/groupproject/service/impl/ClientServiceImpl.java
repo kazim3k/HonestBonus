@@ -35,7 +35,7 @@ public class ClientServiceImpl implements ClientService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         LOG.info("Created Client: [userUuid]: " + userUuid);
@@ -58,7 +58,7 @@ public class ClientServiceImpl implements ClientService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         return clientRepository.findAllByUserUuid(userUuid).stream()

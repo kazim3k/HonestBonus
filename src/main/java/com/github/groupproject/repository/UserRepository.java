@@ -9,6 +9,7 @@ import java.util.Set;
 @Repository
 public interface UserRepository extends CrudRepository<User,Long> {
     User findOneByUuid(String userUuid);
+    User findOneByEmail(String email);
 
     Set<User> findAllBy();
 }

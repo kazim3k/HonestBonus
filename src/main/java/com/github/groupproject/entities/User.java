@@ -1,5 +1,7 @@
 package com.github.groupproject.entities;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String companyName;
+    @Email
     private String email;
     @OneToMany(mappedBy = "user")
     private Set<Client> clients;
@@ -19,6 +22,7 @@ public class User extends BaseEntity {
     private Set<Employee> employees;
     @OneToMany(mappedBy = "user")
     private Set<Bonus> bonuses;
+    private String password;
 
 
     public Long getId() {
@@ -63,5 +67,13 @@ public class User extends BaseEntity {
 
     public void setBonuses(Set<Bonus> bonuses) {
         this.bonuses = bonuses;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

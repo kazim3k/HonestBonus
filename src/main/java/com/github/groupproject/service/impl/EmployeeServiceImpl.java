@@ -35,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         LOG.info("Created Employee: [userUuid]: " + userUuid);
@@ -61,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         return employeeRepository.findAllByUserUuid(userUuid).stream()

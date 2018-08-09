@@ -26,8 +26,10 @@ public class UserController {
     @PostMapping
     @ApiOperation(value = "Add User")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "User added")})
-    public void create(@ApiParam(value = "Add company name", required = true)@RequestParam(name = "Company Name") String companyName,
-                       @ApiParam(value = "Add company email", required = true) @RequestParam(name = "Company email") String email){
+    public void create(@ApiParam(value = "Add company name", required = true)
+                           @RequestParam(name = "Company Name") String companyName,
+                       @ApiParam(value = "Add company email", required = true)
+                       @RequestParam(name = "Company email") String email){
     userService.create(companyName, email);
     }
 

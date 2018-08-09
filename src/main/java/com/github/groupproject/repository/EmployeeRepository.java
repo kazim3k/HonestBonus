@@ -10,6 +10,8 @@ import java.util.Set;
 public interface EmployeeRepository extends CrudRepository<Employee,Long>{
     Employee findOneByUuid(String employeeUuid);
 
+    Employee findOneByEmail(String email);
+
     Set<Employee> findAllBy ();
 
     Set<Employee> findAllByUserUuid(String userUuid);

@@ -26,8 +26,10 @@ public class TransactionController {
     @ApiOperation("Create new transaction")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Transaction created"),
                            @ApiResponse(code = 404, message = "invalid API client key")})
-    public void create(@ApiParam(value = "Add API client key", required = true, defaultValue = "uuid1") @RequestParam(name = "API client key") String clientUuid,
-                       @ApiParam(value = "Declare amount of transaction", required = true) @RequestParam(name = "Amount") BigDecimal amountOfTransaction){
+    public void create(@ApiParam(value = "Add API client key", required = true, defaultValue = "uuid1")
+                           @RequestParam(name = "API client key") String clientUuid,
+                       @ApiParam(value = "Declare amount of transaction", required = true)
+                       @RequestParam(name = "Amount") BigDecimal amountOfTransaction){
         transactionService.create(clientUuid,amountOfTransaction);
     }
 
@@ -43,7 +45,8 @@ public class TransactionController {
     @ApiOperation("Get list of transactions by API cl key")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful - transaction list returned"),
                            @ApiResponse(code = 404, message = "Invalid API client key")})
-    public Set<TransactionDto> findAllByClientUuid(@ApiParam(value = "Add API client key", required = true, defaultValue = "uuid1")@PathVariable String clientUuid){
+    public Set<TransactionDto> findAllByClientUuid(@ApiParam(value = "Add API client key",
+            required = true, defaultValue = "uuid1")@PathVariable String clientUuid){
         return transactionService.findAllByClientUuid(clientUuid);
     }
 
@@ -52,7 +55,8 @@ public class TransactionController {
     @ApiOperation("Get list transactions by API user key")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful - transaction list returned"),
                            @ApiResponse(code = 404, message = "Invalid API user key")})
-    public Set<TransactionDto> findAllByClientUserUuid(@ApiParam(value = "Add API user key", required = true, defaultValue = "uuid")@PathVariable String userUuid){
+    public Set<TransactionDto> findAllByClientUserUuid(@ApiParam(value = "Add API user key",
+            required = true, defaultValue = "uuid")@PathVariable String userUuid){
         return transactionService.findAllByClientUserUuid(userUuid);
     }
 }

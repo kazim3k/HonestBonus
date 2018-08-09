@@ -1,5 +1,7 @@
 package com.github.groupproject.entities;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,11 +14,13 @@ public class Employee extends BaseEntity {
     private Long id;
     private String firstName;
     private String lastName;
+    @Email
     private String email;
     @ManyToOne(optional = false)
     private User user;
     @OneToMany(mappedBy = "employee")
     private Set<EBP> ebps;
+    private String password;
 
 
 
@@ -37,12 +41,9 @@ public class Employee extends BaseEntity {
         this.email = email;
     }
 
-
-
     public void setEbps(Set<EBP> ebps) {
         this.ebps = ebps;
     }
-
 
     public Long getId() {
         return id;
@@ -66,5 +67,13 @@ public class Employee extends BaseEntity {
 
     public Set<EBP> getEbps() {
         return ebps;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

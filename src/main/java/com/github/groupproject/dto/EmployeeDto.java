@@ -2,6 +2,7 @@ package com.github.groupproject.dto;
 
 import com.github.groupproject.entities.Employee;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Email;
 
 public class EmployeeDto {
 
@@ -12,6 +13,7 @@ public class EmployeeDto {
     @ApiModelProperty(notes = "Employee last name")
     private String lastname;
     @ApiModelProperty(notes = "Employee email")
+    @Email
     private String email;
     @ApiModelProperty(notes = "Company name")
     private String companyName;

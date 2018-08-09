@@ -2,6 +2,7 @@ package com.github.groupproject.dto;
 
 import com.github.groupproject.entities.User;
 import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.Email;
 
 public class UserDto {
 
@@ -10,6 +11,7 @@ public class UserDto {
     @ApiModelProperty(notes = "Company name")
     private String companyName;
     @ApiModelProperty(notes = "Company email")
+    @Email
     private String email;
 
     public UserDto(String uuid, String companyName, String email) {

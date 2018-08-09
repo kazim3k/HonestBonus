@@ -41,14 +41,14 @@ public class EBPServiceImpl implements EBPService {
         Client client = clientRepository.findOneByUuid(clientUuid);
         if (client == null || bonus == null || employee == null) {
             LOG.error("ERROR: [Request bonusUuid]: " + bonusUuid +
-                    "[Request employeeUuid]: " + employeeUuid +
-                    "[Request clientUuid]: " + clientUuid +
-                    "[cause]: Bad Request" );
+                    " [Request employeeUuid]: " + employeeUuid +
+                    " [Request clientUuid]: " + clientUuid +
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of client or" +
                     "given Uuid of bonus or given Uuid of employee does not exist ");
         }
-        LOG.info("Created EBP : [employeeUuid]: " + clientUuid + "[bonusUuid]: "
-                + bonusUuid + "[clientUuid]: " + clientUuid);
+        LOG.info("Created EBP : [employeeUuid]: " + clientUuid + " [bonusUuid]: "
+                + bonusUuid + " [clientUuid]: " + clientUuid);
     EBP ebp = new EBP();
         ebp.setBonus(bonusRepository.findOneByUuid(bonusUuid));
         ebp.setEmployee(employeeRepository.findOneByUuid(employeeUuid));
@@ -69,7 +69,7 @@ public class EBPServiceImpl implements EBPService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         return ebpRepository.findAllByClientUserUuid(userUuid).stream()
@@ -82,7 +82,7 @@ public class EBPServiceImpl implements EBPService {
         Employee employee = employeeRepository.findOneByUuid(employeeUuid);
         if (employee == null){
             LOG.error("ERROR: [Request employeeUuid]: " + employeeUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of employee does not exist");
         }
         return ebpRepository.findAllByEmployeeUuid(employeeUuid).stream()

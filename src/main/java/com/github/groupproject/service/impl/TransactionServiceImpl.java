@@ -42,13 +42,13 @@ public class TransactionServiceImpl implements TransactionService {
         Client client = clientRepository.findOneByUuid(clientUuid);
         if (client == null || amountOfTransaction.compareTo(BigDecimal.ZERO) < 0) {
             LOG.error("ERROR: [Request clientUuid]: " + clientUuid +
-                    "[Request amountOfTransaction]: " + amountOfTransaction +
-                    "[cause]: Bad Request" );
+                    " [Request amountOfTransaction]: " + amountOfTransaction +
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of client does not exist " +
                     "or amount of transaction is wrong");
         }
         LOG.info("Created Transaction: [clientUuid]: " + clientUuid
-                + ", [amount]: " + amountOfTransaction);
+                + " [amount]: " + amountOfTransaction);
         Transaction transaction = new Transaction();
         transaction.setClient(client);
         transaction.setAmountOfTransaction(amountOfTransaction);
@@ -69,7 +69,7 @@ public class TransactionServiceImpl implements TransactionService {
         Client client = clientRepository.findOneByUuid(clientUuid);
         if (client == null){
             LOG.error("ERROR: [Request clientUuid]: " + clientUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of client does not exist");
         }
         return transactionRepository.findAllByClientUuid(clientUuid).stream()
@@ -82,7 +82,7 @@ public class TransactionServiceImpl implements TransactionService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         return transactionRepository.findAllByClientUserUuid(userUuid).stream()

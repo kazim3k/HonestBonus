@@ -25,9 +25,12 @@ public class EBPController {
     @ApiOperation("Create new bonus")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful EBP created"),
                            @ApiResponse(code = 404, message = "Invalid API key")})
-    public void create(@ApiParam(value = "Add API bonus key", required = true , defaultValue = "uuid2")@RequestParam(name = "API bonus key") String bonusUuid,
-                       @ApiParam(value = "Add API employee key", required = true, defaultValue = "uuid3")@RequestParam(name = "API employee key") String emloyeeUuid,
-                       @ApiParam(value = "Add API client key", required = true, defaultValue = "uuid1")@RequestParam(name = "API client key") String clientUuid){
+    public void create(@ApiParam(value = "Add API bonus key", required = true , defaultValue = "uuid2")
+                           @RequestParam(name = "API bonus key") String bonusUuid,
+                       @ApiParam(value = "Add API employee key", required = true, defaultValue = "uuid3")
+                       @RequestParam(name = "API employee key") String emloyeeUuid,
+                       @ApiParam(value = "Add API client key", required = true, defaultValue = "uuid1")
+                           @RequestParam(name = "API client key") String clientUuid){
         ebpService.create(bonusUuid,emloyeeUuid,clientUuid);
     }
 
@@ -43,7 +46,8 @@ public class EBPController {
     @ApiOperation("Get list of employee bonus promises by API user key")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful - employee bonus promises found"),
                            @ApiResponse(code = 404, message = "invalid API user key")})
-    public Set<EBPDto> findAllByClientUserUuid(@ApiParam(value = "API user key", required = true, defaultValue = "uuid") @PathVariable String userUuid){
+    public Set<EBPDto> findAllByClientUserUuid(@ApiParam(value = "API user key", required = true,
+                                             defaultValue = "uuid") @PathVariable String userUuid){
         return ebpService.findAllByClientUserUuid(userUuid);
     }
 
@@ -51,7 +55,8 @@ public class EBPController {
     @ApiOperation("Get list of employee bonus promises by API employee key")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful - employee bonus promises found"),
                            @ApiResponse(code = 404, message = "invalid API employee key")})
-    public Set<EBPDto> findAllByEmployeeUuid(@ApiParam(value = "API employee key", required = true, defaultValue = "uuid3") @PathVariable String employeeUuid){
+    public Set<EBPDto> findAllByEmployeeUuid(@ApiParam(value = "API employee key",
+                                            required = true, defaultValue = "uuid3") @PathVariable String employeeUuid){
         return ebpService.findAllByEmployeeUuid(employeeUuid);
     }
 }

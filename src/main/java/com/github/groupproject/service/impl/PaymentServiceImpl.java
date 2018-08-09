@@ -48,7 +48,7 @@ public class PaymentServiceImpl implements PaymentService {
         EBP ebp = ebpRepository.findOneByUuid(ebpUuid);
         if (transaction == null || ebp == null) {
             LOG.error("ERROR: [Request transactionUuid]: " + transactionUuid +
-                    " [Request ebpUuid]: " + ebpUuid + "[cause]: Bad Request" );
+                    " [Request ebpUuid]: " + ebpUuid + " [cause]: Bad Request" );
 
             throw new BadRequestException("Given UUID of transaction or UUID of employee bonus promise" +
                             "does not exist");
@@ -74,7 +74,7 @@ public class PaymentServiceImpl implements PaymentService {
         User user = userRepository.findOneByUuid(userUuid);
         if(user == null) {
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request ");
+                    " [cause]: Bad Request ");
             throw new BadRequestException("Given UUID of user does not exist");
         }
         return paymentRepository.findAllByEbpClientUserUuid(userUuid).stream()
@@ -87,7 +87,7 @@ public class PaymentServiceImpl implements PaymentService {
         Client client = clientRepository.findOneByUuid(clientUuid);
         if(client == null){
             LOG.error("ERROR: [Request clientUuid]: " + clientUuid +
-                      "[cause]: Bad Request");
+                      " [cause]: Bad Request");
             throw new BadRequestException("Given UUID of client does not exist");
         }
         return paymentRepository.findAllByEbpClientUuid(clientUuid).stream()
@@ -100,7 +100,7 @@ public class PaymentServiceImpl implements PaymentService {
         Employee employee = employeeRepository.findOneByUuid(employeeUuid);
         if(employee == null){
             LOG.error("ERROR: [Request clientUuid]: " + employeeUuid +
-                    "[cause]: Bad Request");
+                    " [cause]: Bad Request");
             throw new BadRequestException("Given UUID of employee does not exist");
         }
         return paymentRepository.findAllByEbpEmployeeUuid(employeeUuid).stream()
@@ -113,7 +113,7 @@ public class PaymentServiceImpl implements PaymentService {
         Bonus bonus = bonusRepository.findOneByUuid(bonusUuid);
         if(bonus == null){
             LOG.error("ERROR: [Request clientUuid]: " + bonusUuid +
-                    "[cause]: Bad Request");
+                    " [cause]: Bad Request");
             throw new BadRequestException("Given UUID of bonus does not exist");
         }
         return paymentRepository.findAllByEbpBonusUuid(bonusUuid).stream()

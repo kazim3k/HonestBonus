@@ -35,7 +35,7 @@ public class BonusServiceImpl implements BonusService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         LOG.info("Created Bonus: [userUuid]: " + userUuid);
@@ -60,7 +60,7 @@ public class BonusServiceImpl implements BonusService {
         User user = userRepository.findOneByUuid(userUuid);
         if (user == null){
             LOG.error("ERROR: [Request userUuid]: " + userUuid +
-                    "[cause]: Bad Request" );
+                    " [cause]: Bad Request" );
             throw new BadRequestException("Given UUID of user does not exist");
         }
         return bonusRepository.findAllByUserUuid(userUuid).stream()

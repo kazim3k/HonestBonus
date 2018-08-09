@@ -26,8 +26,10 @@ public class ClientController {
     @ApiOperation(value = "Create new client")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Client created"),
                            @ApiResponse(code = 404, message = "Invalid API user key")})
-    public void create(@ApiParam(value = "Create new client", required = true) @RequestParam(name = "Client Name") String clientName,
-                       @ApiParam(value = "API user key", required = true, defaultValue = "uuid")@RequestParam(name = "API key") String userUuid) {
+    public void create(@ApiParam(value = "Create new client", required = true)
+                           @RequestParam(name = "Client Name") String clientName,
+                       @ApiParam(value = "API user key", required = true, defaultValue = "uuid")
+                       @RequestParam(name = "API key") String userUuid) {
         clientService.create(clientName,userUuid);
     }
 
@@ -43,7 +45,8 @@ public class ClientController {
     @ApiOperation("Get list of clients by API user key")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful - client list returned"),
                            @ApiResponse(code = 404, message = "Client not found !")})
-    public Set<ClientDto> findAllByUserUuid(@ApiParam(value = "API user key", required = true) @PathVariable String userUuid){
+    public Set<ClientDto> findAllByUserUuid(@ApiParam(value = "API user key", required = true)
+                                                @PathVariable String userUuid){
         return clientService.findAllByUserUuid(userUuid);
     }
 }
