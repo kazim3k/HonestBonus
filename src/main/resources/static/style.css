@@ -84,17 +84,17 @@ h1.logo{
 }
 
 .paralax1{
-	background-image: url('img/calculator.jpeg'); /*Free stock photos · Pexels.com*/
+	background-image: url('img/c.jpeg'); /*Free stock photos · Pexels.com*/
 	min-height: 90vh;
 }
 
 .paralax2{
-	background-image: url('img/hand.jpeg'); /*Free stock photos · Pexels.com*/
+	background-image: url('img/a.jpeg'); /*Free stock photos · Pexels.com*/
 	min-height: 80vh;
 }
 
 .paralax3{
-	background-image: url('img/coins.jpeg'); /*Free stock photos · Pexels.com*/
+	background-image: url('img/b.jpeg'); /*Free stock photos · Pexels.com*/
 	min-height: 50vh;
 }
 
@@ -153,7 +153,7 @@ h1.logo{
 /*/////////////////////////////////// Rejestracja.php ///////////////////////*/
 
 .containerindex{
-	background-image: url("img/login.jpeg"); /* Free Stock Photo Pexels.com*/
+	background-image: url("img/cc.jpeg"); /* Free Stock Photo Pexels.com*/
 	height: 100vh;
 	width: 100vw;
 	background-position: center;
@@ -173,6 +173,7 @@ h1.logo{
 	height: 300px;
 	padding: 50px;
 	text-align: center;
+	background-image: url("img/upfeathers.png"); /* Background pattern from Subtle Patterns. Made by Martuchox. */
 	-webkit-box-shadow: 10px 10px 73px 13px rgba(0,0,0,0.75);
 	-moz-box-shadow: 10px 10px 73px 13px rgba(0,0,0,0.75);
 	box-shadow: 10px 10px 73px 13px rgba(0,0,0,0.75);
@@ -248,43 +249,50 @@ h1.logo{
 }
 
 .paralax4{
-	background-image: url('img/login.jpeg'); /*Free stock photos · Pexels.com*/
+	background-image: url('img/cc.jpeg'); /*Free stock photos · Pexels.com*/
 	min-height: 100vh;
 }
 
-/* //////////////////////////////////////////////// twojprofil.html ///////////////////  */
-
-.profil{
-	background-image: url('img/view2.jpeg'); /*Free stock photos · Pexels.com*/
+.paralax5{
+	background-image: url('img/b.jpeg'); /*Free stock photos · Pexels.com*/
 	min-height: 100vh;
 }
 
-.raportcontainer{
+/* ////////////////////////////////// RejestracjaForm.html //////////////////////// */
+
+.containerregisterbox{
+	background-image: url("img/register.jpeg"); /* Free Stock Photo Pexels.com*/
+	height: 100vh;
+	width: 100vw;
+	background-position: center;
+	background-size: cover;
+	display:flex;
+	flex-direction:column;
+	justify-content:left;
+	align-items:center;
+	
+}
+
+.registerbox{
 	margin-left: auto;
 	margin-right: auto;
-	width: 1000px;
-	height: 40vh;
-	margin-top: 20vh;
-	border: 2px solid #133046;
-	background-color: #f1e4b3;
-	opacity: 0.6;
+	margin-top: 50px;
+	width: 300px;
+	min-height: 350px;
+	padding: 50px;
+	text-align: center;
+	background-image: url("img/upfeathers4.png"); /* Background pattern from Subtle Patterns. Made by Martuchox. */
+	-webkit-box-shadow: 10px 10px 73px 13px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 73px 13px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 73px 13px rgba(0,0,0,0.75);
+	border-radius: 50px;
 }
 
-/* ///////////////////////////////////// client.html /////////////////////////////// */
-.client{
-	background-image: url('img/view1.jpeg'); /*Free stock photos · Pexels.com*/
-	min-height: 100vh;
+.registerbox h3{
+	margin-top: 10px;
 }
 
-
-/* ///////////////////////////////////// employye.html /////////////////////////////// */
-.employee{
-	background-image: url('img/view3.jpeg'); /*Free stock photos · Pexels.com*/
-	min-height: 100vh;
-}
-
-/* ///////////////////////////////////// bonus.html /////////////////////////////// */
-.bonus{
-	background-image: url('img/view4.jpeg'); /*Free stock photos · Pexels.com*/
-	min-height: 100vh;
+.error{
+	color: darkred;
+	padding: 10px;
 }

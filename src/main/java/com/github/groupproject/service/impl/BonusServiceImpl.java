@@ -10,10 +10,13 @@ import com.github.groupproject.service.BonusService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toSet;
 
 @Service
 public class BonusServiceImpl implements BonusService {
@@ -52,7 +55,7 @@ public class BonusServiceImpl implements BonusService {
     public Set<BonusDto> findAll() {
         return bonusRepository.findAllBy().stream()
                 .map(BonusDto::new)
-                .collect(Collectors.toSet());
+                .collect(toSet());
     }
 
     @Override
@@ -65,6 +68,21 @@ public class BonusServiceImpl implements BonusService {
         }
         return bonusRepository.findAllByUserUuid(userUuid).stream()
                 .map(BonusDto::new)
-                .collect(Collectors.toSet());
+                .collect(toSet());
     }
+
+    @Override
+    public Set<BonusDto> findAllOfLoggedUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findOneByEmail(email);
+        if (user == null){
+            LOG.error("ERROR: [email]: " + email +
+                    " [cause]: Bad Request" );
+            throw new BadRequestException("Given UUID of user does not exist");
+        }
+        return bonusRepository.findAllByUserUuid(user.getUuid()).stream()
+                .map(BonusDto::new)
+                .collect(toSet());
+    }
+
 }

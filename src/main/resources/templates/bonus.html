@@ -1,19 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="pl">
-<head>
-	<meta charset="utf-8">
-	<title>HB Bonus</title>
-	<meta name="description" content=" !!! Opis"> 
-	<meta name="keywords" content=" !!! Keywords">
-	<meta name="author" content="SJM">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-	<link rel="stylesheet" href="style.css" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin-ext" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="img/QIS.png">
-	
-	
-</head>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
 <body>
 	
 	<div id="container">
@@ -41,6 +28,16 @@
 	
 			<div class="raportcontainer">
 				<h1>Spis Bonusów <br/> +  ? dodawanie bonusów?</h1>
+				<table>
+					<tr >
+						<td >Company name</td>
+						<td >Share</td>
+					</tr>
+					<tr th:each="bonus: ${bonuses}">
+						<td th:text="${bonus.companyName}" />
+						<td th:text="${bonus.shareOfTransaction}" />
+					</tr>
+				</table>
 			</div>
 		</div>	
 	</div>

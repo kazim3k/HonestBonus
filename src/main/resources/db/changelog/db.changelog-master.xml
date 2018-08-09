@@ -47,7 +47,7 @@
             </column>
             <column name="created_at" type="TIMESTAMP(29) WITHOUT TIME ZONE"/>
             <column name="uuid" type="VARCHAR(255)"/>
-            <column name="repeatPassword" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
             <column name="first_name" type="VARCHAR(255)"/>
             <column name="last_name" type="VARCHAR(255)"/>
             <column name="password" type="VARCHAR(255)"/>
@@ -90,7 +90,7 @@
             <column name="uuid" type="VARCHAR(255)"/>
             <column name="company_name" type="VARCHAR(255)"/>
             <column name="password" type="VARCHAR(255)"/>
-            <column name="repeatPassword" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="Miguel (generated)" id="1533316161151-9">
@@ -153,7 +153,7 @@
             <column name="id" value="10"/>
             <column name="uuid" value="uuid"/>
             <column name="company_name" value="google"/>
-            <column name="repeatPassword" value="google@gmail.com"/>
+            <column name="email" value="google@gmail.com"/>
         </insert>
     </changeSet>
 
@@ -183,7 +183,7 @@
             <column name="uuid" value="uuid3"/>
             <column name="first_name" value="Jan"/>
             <column name="last_name" value="Kowalski"/>
-            <column name="repeatPassword" value="jan@gmail.com"/>
+            <column name="email" value="jan@gmail.com"/>
             <column name="user_id" value="10"/>
         </insert>
     </changeSet>
@@ -221,7 +221,7 @@
             <column name="id" value="17"/>
             <column name="uuid" value="uuid7"/>
             <column name="company_name" value="apple"/>
-            <column name="repeatPassword" value="apple@apple.com"/>
+            <column name="email" value="apple@apple.com"/>
         </insert>
     </changeSet>
 
@@ -230,7 +230,7 @@
             <column name="id" value="18"/>
             <column name="uuid" value="uuid8"/>
             <column name="company_name" value="ibm"/>
-            <column name="repeatPassword" value="ibm@ibm.com"/>
+            <column name="email" value="ibm@ibm.com"/>
         </insert>
     </changeSet>
 
@@ -249,7 +249,7 @@
             <column name="uuid" value="uuid10"/>
             <column name="first_name" value="Wacław"/>
             <column name="last_name" value="Nowak"/>
-            <column name="repeatPassword" value="wacky@gmail.com"/>
+            <column name="email" value="wacky@gmail.com"/>
             <column name="user_id" value="10"/>
         </insert>
     </changeSet>
@@ -260,7 +260,7 @@
             <column name="uuid" value="uuid11"/>
             <column name="first_name" value="Gregory"/>
             <column name="last_name" value="Waszyngton"/>
-            <column name="repeatPassword" value="greg@gmail.com"/>
+            <column name="email" value="greg@gmail.com"/>
             <column name="user_id" value="18"/>
         </insert>
     </changeSet>
@@ -303,16 +303,6 @@
             <column name="transaction_id" value="14"/>
         </insert>
     </changeSet>
-
-
-
-
-
-
-
-
-
-
 
 
 

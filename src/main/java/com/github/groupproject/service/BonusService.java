@@ -11,5 +11,7 @@ public interface BonusService {
     Set<BonusDto> findAll();
 
     Set<BonusDto> findAllByUserUuid(String userUuid);
+
+    Set<BonusDto> findAllOfLoggedUser();
 }
 

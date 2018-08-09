@@ -19,7 +19,7 @@ public class UserDetailsImpl implements UserDetails {
     public UserDetailsImpl(User user) {
         this.email = user.getEmail();
         this.role = "USER";
-        this.password = user.getEmail();
+        this.password = user.getPassword();
         this.enabled = this.password != null;
 
     }
