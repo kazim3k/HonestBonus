@@ -1,9 +1,7 @@
 package com.github.groupproject.service.impl;
 
 import com.github.groupproject.entities.Payment;
-import com.github.groupproject.repository.EBPRepository;
-import com.github.groupproject.repository.PaymentRepository;
-import com.github.groupproject.repository.TransactionRepository;
+import com.github.groupproject.repository.*;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +20,20 @@ public class PaymentServiceImplTest {
     private TransactionRepository transactionRepository;
     @Autowired
     private PaymentRepository paymentRepository;
+    @Autowired
+    private ClientRepository clientRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private BonusRepository bonusRepository;
     @Test
     public void whenCreatingPayment_ThenPaymentExist() {
 
         PaymentServiceImpl paymentService = new PaymentServiceImpl(paymentRepository,
-                                                transactionRepository,ebpRepository);
+                                                transactionRepository,ebpRepository,userRepository,
+                                                clientRepository, employeeRepository, bonusRepository);
 
         String paymentUuid = paymentService.create("uuid4","uuid5");
         Payment payment = paymentRepository.findOneByUuid(paymentUuid);

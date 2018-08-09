@@ -23,7 +23,7 @@ public class EmployeeController {
     @PostMapping
     @ApiOperation("Create new employee")
     @ApiResponses( value = {@ApiResponse(code = 200, message = "Employee created"),
-                            @ApiResponse(code = 500, message = "Invalid API user key")})
+                            @ApiResponse(code = 404, message = "Invalid API user key")})
     public void create(@ApiParam(value = "Employee first name", required = true) @RequestParam(name = "First name") String firstName,
                        @ApiParam(value = "Employee last name", required = true)@RequestParam(name = "Last name") String lastName,
                        @ApiParam(value = "Employee email", required = true)@RequestParam(name = "Email") String email,
@@ -42,7 +42,7 @@ public class EmployeeController {
     @GetMapping("/{userUuid}")
     @ApiOperation("Get list of employees by API user key")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Successful - employee list generated"),
-                           @ApiResponse(code = 500, message = "invalid API user key")})
+                           @ApiResponse(code = 404, message = "invalid API user key")})
     public Set<EmployeeDto> findAllByUserUuid(@ApiParam(value = "API user key", required = true, defaultValue = "uuid") @PathVariable String userUuid){
         return employeeService.findByUserUuid(userUuid);
     }

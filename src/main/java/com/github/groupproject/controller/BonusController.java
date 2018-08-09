@@ -24,7 +24,7 @@ public class BonusController {
     @PostMapping
     @ApiOperation("Create new bonus")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Client created"),
-                           @ApiResponse(code = 500, message = "Invalid API user key")})
+                           @ApiResponse(code = 404, message = "Invalid API user key")})
     public void create(@ApiParam(value = "Add bonus", required = true) @RequestParam(name = "Bonus name") String name,
                        @ApiParam(value = "Set transaction share (e.g. 0.06 as 6%)", required = true)@RequestParam(name = "Share of transaction") Double shareOfTransaction,
                        @ApiParam(value = "Set duration of bonus in days", required = true)@RequestParam(name = "Bonus timeout") Integer timeOutInDays,

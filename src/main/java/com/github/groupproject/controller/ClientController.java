@@ -25,7 +25,7 @@ public class ClientController {
     @PostMapping
     @ApiOperation(value = "Create new client")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Client created"),
-                           @ApiResponse(code = 500, message = "Invalid API user key")})
+                           @ApiResponse(code = 404, message = "Invalid API user key")})
     public void create(@ApiParam(value = "Create new client", required = true) @RequestParam(name = "Client Name") String clientName,
                        @ApiParam(value = "API user key", required = true, defaultValue = "uuid")@RequestParam(name = "API key") String userUuid) {
         clientService.create(clientName,userUuid);

@@ -1,13 +1,9 @@
 package com.github.groupproject.service.impl;
 
 import com.github.groupproject.dto.PaymentDto;
-import com.github.groupproject.entities.EBP;
-import com.github.groupproject.entities.Payment;
-import com.github.groupproject.entities.Transaction;
+import com.github.groupproject.entities.*;
 import com.github.groupproject.exceptions.BadRequestException;
-import com.github.groupproject.repository.EBPRepository;
-import com.github.groupproject.repository.PaymentRepository;
-import com.github.groupproject.repository.TransactionRepository;
+import com.github.groupproject.repository.*;
 import com.github.groupproject.service.PaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +23,23 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
     private TransactionRepository transactionRepository;
     private EBPRepository ebpRepository;
+    private UserRepository userRepository;
+    private ClientRepository clientRepository;
+    private EmployeeRepository employeeRepository;
+    private BonusRepository bonusRepository;
 
     @Autowired
-    public PaymentServiceImpl(PaymentRepository paymentRepository, TransactionRepository transactionRepository, EBPRepository ebpRepository) {
+    public PaymentServiceImpl(PaymentRepository paymentRepository, TransactionRepository transactionRepository,
+                              EBPRepository ebpRepository, UserRepository userRepository,
+                              ClientRepository clientRepository, EmployeeRepository employeeRepository,
+                              BonusRepository bonusRepository) {
         this.paymentRepository = paymentRepository;
         this.transactionRepository = transactionRepository;
         this.ebpRepository = ebpRepository;
+        this.userRepository = userRepository;
+        this.clientRepository = clientRepository;
+        this.employeeRepository = employeeRepository;
+        this.bonusRepository = bonusRepository;
     }
 
     @Override
@@ -64,6 +71,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Set<PaymentDto> findAllByEBPClientUserUuid(String userUuid) {
+        User user = userRepository.findOneByUuid(userUuid);
+        if(user == null) {
+            LOG.error("ERROR: [Request userUuid]: " + userUuid +
+                    "[casue]: Bad Request ");
+            throw new BadRequestException("Given UUID of user does not exist");
+        }
         return paymentRepository.findAllByEbpClientUserUuid(userUuid).stream()
                 .map(PaymentDto::new)
                 .collect(toSet());
@@ -71,6 +84,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Set<PaymentDto> findAllByEbpClientUuid(String clientUuid) {
+        Client client = clientRepository.findOneByUuid(clientUuid);
+        if(client == null){
+            LOG.error("ERROR: [Request clientUuid]: " + clientUuid +
+                      "[casue]: Bad Request");
+            throw new BadRequestException("Given UUID of client does not exist");
+        }
         return paymentRepository.findAllByEbpClientUuid(clientUuid).stream()
                 .map(PaymentDto::new)
                 .collect(toSet());
@@ -78,6 +97,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Set<PaymentDto> findAllByEbpEmployeeUuid(String employeeUuid) {
+        Employee employee = employeeRepository.findOneByUuid(employeeUuid);
+        if(employee == null){
+            LOG.error("ERROR: [Request clientUuid]: " + employeeUuid +
+                    "[casue]: Bad Request");
+            throw new BadRequestException("Given UUID of employee does not exist");
+        }
         return paymentRepository.findAllByEbpEmployeeUuid(employeeUuid).stream()
                 .map(PaymentDto::new)
                 .collect(toSet());
@@ -85,6 +110,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Set<PaymentDto> findAllByEbpBonusUuid(String bonusUuid) {
+        Bonus bonus = bonusRepository.findOneByUuid(bonusUuid);
+        if(bonus == null){
+            LOG.error("ERROR: [Request clientUuid]: " + bonusUuid +
+                    "[casue]: Bad Request");
+            throw new BadRequestException("Given UUID of bonus does not exist");
+        }
         return paymentRepository.findAllByEbpBonusUuid(bonusUuid).stream()
                 .map(PaymentDto::new)
                 .collect(toSet());

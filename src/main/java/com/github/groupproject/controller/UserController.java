@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping
     @ApiOperation(value = "Get list of all users")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "User found"),
-                           @ApiResponse(code = 500, message = "Unsuccessful - user not found")})
+                           @ApiResponse(code = 404, message = "Unsuccessful - user not found")})
     public Set<UserDto> findAll(){
         return userService.findAll();
     }
