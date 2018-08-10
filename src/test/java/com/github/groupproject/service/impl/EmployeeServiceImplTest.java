@@ -1,5 +1,6 @@
 package com.github.groupproject.service.impl;
 
+import com.github.groupproject.email.EmailService;
 import com.github.groupproject.entities.Employee;
 import com.github.groupproject.repository.EmployeeRepository;
 import com.github.groupproject.repository.UserRepository;
@@ -18,10 +19,12 @@ public class EmployeeServiceImplTest {
     private EmployeeRepository employeeRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private EmailService emailService;
 
     @Test
     public void whenCreatingEmployee_ThenEmployeeExists() {
-        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(userRepository, employeeRepository);
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(userRepository, employeeRepository, emailService);
 
         String employeeUuid = employeeService.create("Michal","Kowalski",
                 "kowalski@24.pl","uuid");
