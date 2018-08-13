@@ -27,13 +27,13 @@ public class PasswordController {
         SetPasswordDto dto = new SetPasswordDto();
         dto.setUuid(uuid);
         model.addAttribute("dto", dto);
-        return "tutajBedzieOdnosnikDoHtmla";
+        return "rejestracjaform";
     }
 
     @PutMapping("/set_password")
     public String setPassword(SetPasswordDto dto) {
         passwordService.setPassword(dto);
-        return "tutajBedzieOdnosnikDoHtmla";
+        return "login";
     }
 
 }
