@@ -1,6 +1,7 @@
 package com.github.groupproject.service.impl;
 
 import com.github.groupproject.dto.EmployeeDto;
+import com.github.groupproject.email.EmailService;
 import com.github.groupproject.entities.Employee;
 import com.github.groupproject.entities.User;
 import com.github.groupproject.exceptions.BadRequestException;
@@ -11,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,13 +21,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     Logger LOG = LoggerFactory.getLogger(ClientServiceImpl.class);
 
+
     private UserRepository userRepository;
     private EmployeeRepository employeeRepository;
+    private EmailService emailService;
 
     @Autowired
-    public EmployeeServiceImpl(UserRepository userRepository, EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(UserRepository userRepository, EmployeeRepository employeeRepository,
+                               EmailService emailService) {
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
+        this.emailService = emailService;
     }
 
     @Override
@@ -45,6 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setEmail(email);
         employee.setUser(user);
         employeeRepository.save(employee);
+        emailService.sendMessage(employee.getEmail(),"Welcome to Honest Bonus",employee.getUuid());
         return employee.getUuid();
     }
 
